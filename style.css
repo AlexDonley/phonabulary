@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 10px; 
+    box-sizing: border-box;
+    font-family: century gothic
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    justify-content: center;
+    align-items: center;
+    background: rgb(57, 57, 57);
+    background-size: cover;
+    transition: all 0.4s ease;
+}
+
+h1 {
+    color: rgb(255, 255, 255);
+    font-size: 12rem;
+    font-family: sans-serif;
+    text-align: center;
+    line-height: 50vh;
+}
+
+.actions{
+    justify-content: center;
+    display: flex;
+}
+
+button{
+    font-size: larger;
+    font-family: sans-serif;
+    margin: 10px;
+    color: aqua;
+    background-color: rgb(46, 46, 46);
+    border-radius: 7px;
+    border-color: gray;
+    padding: 10px;
+}
+
+span{
+    opacity: .5;
+    transition: all 0.4s ease;
+    /*transform: translateY(0px) rotate(0deg);*/
+    display: inline-block;
+}
+
+.bigger{
+    /*transform: translateY(-50px) rotate(-45deg);*/
+    font-size: 16rem;
+    opacity: 1
+}
+
