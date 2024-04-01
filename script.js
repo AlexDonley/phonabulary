@@ -9,7 +9,7 @@ let currentWord
 let colors = ['yellow', 'cyan', 'orange', 'pink', 'coral'];
 
 let input = "The quick brown fox jumps over the lazy dog."
-let sampleList = ['cat', 'dog', 'hat', 'sun', 'pen', 'defenestration']
+let sampleList = ['thrall', 'chin', 'splat', 'mouth', 'strong', 'chang']
 const vows = ['a', 'e', 'i', 'o', 'u']
 const cons = [
     'b', 'c', 'd', 
@@ -21,6 +21,30 @@ const cons = [
     'x', 'y', 'z'
 ]
 const semivows = ['w', 'y']
+
+//have to fix hr, not a real digraph
+
+const onsetDigraphs = [
+    "ch", "ph", "sh", "th", "wh",
+    "br", "cr", "dr", "fr", "gr", "hr", "kr", "pr", "sr", "tr", "vr", "wr",
+    "bl", "cl", "fl", "gl", "kl", "pl",
+    "sl", "sm", "sn", "sp", "st", "sv",
+]
+const vowelDigraphs = [
+    "ae", "ai", "ao", "au", "aw", "ay", "ar",
+    "ea", "ee", "ei", "eo", "eu", "ew", "ey", "er",
+    "ia", "ie", "io", "iu", "ir",
+    "oa", "oe", "oi", "oo", "ou", "ow", "oy", "or",
+    "ua", "ue", "ui", "uo", "ur"
+]
+const onsetTrigraphs = [
+    "scr", "str", "spr", "spl", "thr"
+]
+const codaDigraphs = [
+    "th", "ck", "ll", "ss", "ff", "ng", "nk"
+]
+
+
 const nonlets = [
     ' ', '.', '!', 
     '?', '@', '#', 
@@ -33,11 +57,49 @@ const nonlets = [
 // the function loops through the array of non-letters and filters them out one at a time
 // is there an easier way to do this in Javascript? Honestly unsure
 
-async function splitDisplayWord(){
+async function splitIntoLetters(){
     charArray = letterizer.innerText.split('')
     letterizer.innerHTML = '';
+    joinIntoClusters(charArray);
+}
+
+function joinIntoClusters(arr){
     n = 0;
-    charArray.forEach(character =>{
+    arr.forEach(char =>{
+        if (vows.includes(char)) {
+            vowelTest = char + arr[n + 1];
+            if (vowelDigraphs.includes(vowelTest)) {
+                arr.splice(n, 2, vowelTest);
+            }
+
+            codaTest = arr[n+1] + arr[n+2];
+            console.log(codaTest);
+            if (codaDigraphs.includes(codaTest)) {
+                arr.splice((n+1), 2, codaTest);
+            }
+
+            onsetTest1 = arr[n-2] + arr[n-1];
+            if (onsetDigraphs.includes(onsetTest1)){
+                onsetTest2 = arr[n-3] + onsetTest1;
+                if (onsetTrigraphs.includes(onsetTest2)){
+                    arr. splice((n - 3), 3, onsetTest2)
+                } else{
+                    arr.splice((n - 2), 2, onsetTest1);
+                }                
+            }
+
+            
+        }
+        n++
+    })
+    console.log(arr);
+    spanArray(arr);
+}
+
+function spanArray(arr){
+    n = 0;
+    wordLength = arr.length;
+    arr.forEach(character =>{
         const newSpan = document.createElement('span');
         newSpan.setAttribute('id', ("span" + n))
         newSpan.classList.add('small');
@@ -51,9 +113,8 @@ function loadNextWord(){
     letterCount = 0;
     currentWord = sampleList[wordCount];
     letterizer.innerHTML = currentWord;
-    wordLength = sampleList[wordCount].length;
     console.log(wordLength);
-    splitDisplayWord();
+    splitIntoLetters();
 }
 
 loadNextWord();
@@ -105,7 +166,7 @@ window.addEventListener('keydown', (ev) =>{
     } else if (ev.key == 'ArrowDown'){
         next();
     } else if (ev.key == 'b'){
-        changeBackground(currentWord);
+        //changeBackground(currentWord);
     }
 })
 
@@ -118,7 +179,7 @@ function next(){
         console.log(letterCount)
     } else if (letterCount == wordLength) {
         letterCount++;
-        changeBackground(currentWord);
+        //changeBackground(currentWord);
     } else {
         wordCount++;
         if (wordCount < sampleList.length){
