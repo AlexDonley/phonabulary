@@ -4,15 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-    <title>Syllablizer</title>
+    <script src="script.js" type="module" defer></script>
+    <title>Phonabulary</title>
 </head>
-<body id="bg">
-    <h1 class="letters" id="letterizer">cat</h1>
-    <div class="actions">
-        <button type=btn id="btn" onClick="previous()">previous</button>
-        <button type=btn id="fullbtn" onClick="fullscreen()">fullscreen</button>
-        <button type=btn class="fixedbtn" id="btn" onClick="next()">next</button>
+<body>
+    <div class="menu" id="menu">
+        <div class="wrapper" id="wrapper">
+            <button class="go" onclick="go()" id="go">GO</button>
+        </div>
+
+        <section class="buttonGrid" id="buttonGrid">
+        </section>
+       
+    </div>
+    
+    <h1 class="letters" id="letterizer"></h1>
+    <div class="actions" id="actions">
+
     </div>
 </body>
 </html>
