@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" type="module" defer></script>
+    <script src="script.js" defer></script>
     <title>Phonabulary</title>
 </head>
 <body>
     <div class="menu" id="menu">
         <div class="wrapper" id="wrapper">
+            <input type="checkbox" class="checkbox" id="shuffler">
+            <label for="shuffler"> shuffle</label>
             <button class="go" onclick="go()" id="go">GO</button>
         </div>
 
@@ -19,6 +21,9 @@
     </div>
     
     <h1 class="letters" id="letterizer"></h1>
+    <div class="chinese" id="chinese">
+        
+    </div>
     <div class="actions" id="actions">
 
     </div>

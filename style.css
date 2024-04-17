@@ -6,6 +6,12 @@
     
 }
 
+@font-face {
+    font-family: 'ZH_zhuyin';
+    src: url(zhuyin.ttf);
+}
+
+
 ::-webkit-scrollbar {
     display: none;
 }
@@ -51,7 +57,7 @@ button {
 .go {
     border-radius: 500px;
     font-size: 6rem;
-    
+    height: 180px;
 }
 
 .go:hover {
@@ -59,14 +65,47 @@ button {
     rotate: 10deg;
 }
 
+.checkbox {
+    width: 30px;
+    height: 30px;
+}
+
+label {
+    font-size: 2rem;
+}
+
+.chinese {
+    font-family: ZH_zhuyin;
+    margin: 0;
+    padding: 0;
+    writing-mode: vertical-rl;
+    position: absolute;
+    font-size: 9rem;
+    width: 9rem;
+    right: 16vw;
+    top: 200px;
+    z-index: -1;
+    opacity: 1;
+    transition: all 0.4s ease;
+}
+
+.clear{
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(50px);
+}
+
 h1 {
-    margin-top: 100px;
+    
     color: rgb(255, 255, 255);
     font-size: 16rem;
     font-family: sans-serif;
     text-align: center;
     line-height: 50vh;
-    
+}
+
+.active-letters{
+    margin-top: 15vh;
 }
 
 .actions {
