@@ -9,7 +9,8 @@ const onsetDigraphs = [
     "ch", "ph", "sh", "th", "wh",
     "br", "cr", "dr", "fr", "gr", "hr", "kr", "pr", "sr", "tr", "vr", "wr",
     "bl", "cl", "fl", "gl", "kl", "pl",
-    "sl", "sm", "sn", "sp", "st", "sv", "sw"
+    "sl", "sm", "sn", "sp", "st", "sv", "sw",
+    "kn", "gn", "pn", "pt"
 ]
 
 const vowelDigraphs = [
@@ -435,7 +436,11 @@ const translations = {
     "start": "開始",
 }
 
+rainbowRibbon = []
+
 const myDocument = document.documentElement;
+const rainbow = document.getElementById('rainbow');
+const rainbower = document.getElementById('rainbower');
 const menu = document.getElementById('menu');
 const actions = document.getElementById('actions');
 const wrapper = document.getElementById('wrapper');
@@ -483,6 +488,62 @@ async function spawnButtons(){
 }
 
 spawnButtons();
+
+function colorRainbow(hue) {
+    colorString = "";
+    
+    colorIndex = [];
+    defaultColor = 'rgb(56, 56, 56)'
+
+    if (!hue){
+        for (let n=0; n < 60; n++) {
+            tempArray = [defaultColor, 5 * n / 3];
+            rainbowRibbon.push(tempArray);
+        }
+
+    } else {
+        
+        n = 0;
+
+        hslString = 'hsl(' + hue + ' 80% 80%)';
+        index = hue / 3.6;
+        colorIndex = [hslString, index];
+
+        console.log(colorIndex);
+        
+        while (rainbowRibbon[n][1] < colorIndex[1]) {
+            n++;
+
+            console.log(rainbowRibbon[n][1]);
+            console.log(colorIndex[1]);
+                       
+        }
+        
+        rainbowRibbon.splice(n, 1, colorIndex);
+
+        
+        //console.log(rainbowRibbon);
+    }
+
+    n = 0;
+
+    rainbowRibbon.forEach(item => {
+        
+        colorString += item[0] + ' ' + item[1] + '%';
+        
+        n++
+        if (!(n==rainbowRibbon.length)){
+            colorString += ', ';
+        }
+        
+    })
+    colorString = 'linear-gradient(90deg, ' + colorString + ')'
+    console.log(colorString);
+
+    rainbow.style.background = colorString;
+}
+
+colorRainbow();
 
 
 const buttons = document.getElementsByTagName("button");
@@ -725,11 +786,14 @@ function next(){
             let currentLetter = document.getElementById('span' + letterCount)
             currentLetter.classList.add('bigger');
             // this code is for random colored letters
-            hue = Math.floor(Math.random() * 360)
+            hue = Math.floor(Math.random() * 60) * 6
 
             // switch the the code below for rainbow lettering
             // hue = 360 * (letterCount) / wordLength
             currentLetter.style.color = `hsl(${hue}, 80%, 80%)`;
+            if (rainbower.checked === true){
+                colorRainbow(hue);
+            }
 
             // check for silent e
 
@@ -786,6 +850,8 @@ function next(){
         wrapper.innerHTML = 
             '<input type="checkbox" class="checkbox" id="shuffler">' +
             '<label for="shuffler"> shuffle</label>'+
+            '<input type="checkbox" class="checkbox" id="rainbower">' +
+            '<label for="rainbower"> rainbow</label>' +
             '<button class="go" onclick="go()" id="go">GO</button>'
     }
 }
