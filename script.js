@@ -124,28 +124,28 @@ const graphemes = {
 
 const translations = {
     "bad": "壞的",
-    "mad": "發瘋的 發狂的",
-    "sad": "悲哀的 令人傷心的",
+    "mad": "發瘋的,發狂的",
+    "sad": "悲哀的,令人,傷心的",
     "fan": "電扇",
     "man": "男人",
     "ham": "火腿",
-    "bat": "蝙蝠 球棒",
+    "bat": "蝙蝠,球棒",
     "cat": "貓",
     "fat": "胖的",
     "hat": "(有邊的)帽子",
     "kid": "孩子",
     "lid": "蓋子",
-    "dig": "(掘土) 挖洞",
+    "dig": "(掘土)挖洞",
     "pig": "豬",
     "fin": "鰭",
-    "win": "勝利, 贏得",
+    "win": "勝利,贏得",
     "kit": "小貓",
-    "hit": "打擊 襲擊",
+    "hit": "打擊,襲擊",
     "job": "職業",
     "mom": "母親",
-    "hop": "跳過, 躍過",
+    "hop": "跳過,躍過",
     "mop": "拖(地)",
-    "top": "頂部 山頂 頭頂",
+    "top": "頂部,山頂,頭頂",
     "dot": "點",
     "not": "不是",
     "pot": "鍋子",
@@ -173,17 +173,17 @@ const translations = {
     "name": "名字",
     "base": "基礎",
     "case": "案件",
-    "hate": "仇恨 憎恨",
+    "hate": "仇恨,憎恨",
     "late": "遲到的",
     "save": "挽救",
-    "wave": "揮舞 揮動",
+    "wave": "揮舞,揮動",
     "hide": "把...藏起來",
     "ride": "騎馬 乘車",
     "life": "生活",
     "wife": "妻子",
     "bike": "腳踏車",
     "like": "喜歡",
-    "fine": "健康的 優秀的",
+    "fine": "健康的,優秀的",
     "wine": "酒",
     "bite": "咬 叮",
     "kite": "風箏",
@@ -193,7 +193,7 @@ const translations = {
     "rope": "繩索",
     "nose": "鼻子",
     "rose": "玫瑰花",
-    "note": "筆記 記號 音符",
+    "note": "筆記,記號,音符",
     "vote": "投票",
     "eve": "前夕",
     "Steve": "男子名",
@@ -260,7 +260,7 @@ const translations = {
     "foot": "腳",
     "too": "也",
     "zoo": "動物園",
-    "cool": "涼快的 涼爽的",
+    "cool": "涼快的,涼爽的",
     "room": "房間",
     "moon": "月亮",
     "our": "我們的",
@@ -269,8 +269,8 @@ const translations = {
     "cloud": "雲",
     "round": "圓形的",
     "bow": "鞠躬",
-    "cow": "母牛 乳牛",
-    "how": "怎麼 如何",
+    "cow": "母牛,乳牛",
+    "how": "怎麼,如何",
     "now": "現在",
     "down": "向下",
     "own": "擁有",
@@ -436,20 +436,70 @@ const translations = {
     "start": "開始",
 }
 
+unsplashImages = {
+    'apple': 'https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'book': 'https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'cat': 'https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'dog': 'https://images.unsplash.com/photo-1561037404-61cd46aa615b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'egg': 'https://images.unsplash.com/photo-1590005031487-03c7f56ef7d3?q=80&w=2078&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'fish': 'https://images.unsplash.com/photo-1578507065211-1c4e99a5fd24?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'girl': 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'hat': 'https://images.unsplash.com/photo-1576858688752-d7d4dbd6686a?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'ink': 'https://images.unsplash.com/photo-1583162557635-53d9931332c5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'jump': 'https://plus.unsplash.com/premium_photo-1664461667883-9a0354c90629?q=80&w=1257&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'king': 'https://images.unsplash.com/photo-1457052271742-6b6b66887aeb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'lion': 'https://images.unsplash.com/photo-1511216113906-8f57bb83e776?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+    'monkey': 'https://images.unsplash.com/photo-1540573133985-87b6da6d54a9?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'nose': 'https://images.unsplash.com/photo-1466921583968-f07aa80c526e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+    'ox': 'https://images.unsplash.com/photo-1676322559474-91c24a7e6a1c?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+    'pen': 'https://plus.unsplash.com/premium_photo-1664110691129-ca0f4fbe8533?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+    'queen': 'https://images.unsplash.com/photo-1545828751-0a3b3a1da949?q=80&w=974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+    'read': 'https://images.unsplash.com/photo-1491309055486-24ae511c15c7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+    'sun': 'https://images.unsplash.com/photo-1614642264762-d0a3b8bf3700?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+    'tea': 'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+    'up': 'https://plus.unsplash.com/premium_photo-1700739685581-e9bfb2ef5a98?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+    'vest': 'https://images.unsplash.com/photo-1593029762624-0c28669f2056?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+    'water': 'https://images.unsplash.com/photo-1527066236128-2ff79f7b9705?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+    'box': 'https://images.unsplash.com/photo-1623668514914-ab262971bc88?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+    'yo-yo': 'https://images.unsplash.com/photo-1649988479357-ea7daba0a43d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8eW8lMjB5b3xlbnwwfHwwfHx8MA%3D%3D', 
+    'zoo': 'https://images.unsplash.com/photo-1534567153574-2b12153a87f0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'bad': 'https://images.unsplash.com/photo-1518201068925-99c2d0b932de?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGJhZHxlbnwwfHwwfHx8MA%3D%3D',
+    'mad': 'https://images.unsplash.com/photo-1544717301-9cdcb1f5940f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFkfGVufDB8fDB8fHww',
+    'sad': 'https://images.unsplash.com/photo-1607607148470-51131ea28dea?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y3J5fGVufDB8fDB8fHww',
+    'fan': 'https://images.unsplash.com/photo-1564510182791-29645da7fac4?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZmFufGVufDB8fDB8fHww',
+    'man': 'https://images.unsplash.com/photo-1557862921-37829c790f19?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFufGVufDB8fDB8fHww',
+    'ham': 'https://images.unsplash.com/photo-1524438418049-ab2acb7aa48f?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aGFtfGVufDB8fDB8fHww',
+    'bat': 'https://images.unsplash.com/photo-1613298209752-5644a907c101?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGJhdHxlbnwwfHwwfHx8MA%3D%3D',
+    'fat': 'https://images.unsplash.com/flagged/photo-1557040430-fe79b4234586?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZmF0fGVufDB8fDB8fHww'
+}
+
 rainbowRibbon = []
 
 const myDocument = document.documentElement;
+
 const rainbow = document.getElementById('rainbow');
-const rainbower = document.getElementById('rainbower');
-const menu = document.getElementById('menu');
-const actions = document.getElementById('actions');
-const wrapper = document.getElementById('wrapper');
-const translation = document.getElementById('chinese');
-const buttonGrid = document.getElementById('buttonGrid');
 const shuffler = document.getElementById('shuffler');
+const rainbower = document.getElementById('rainbower');
+const imager = document.getElementById('imager');
+const menu = document.getElementById('menu');
+const settings = document.getElementById('settings');
+const options = document.getElementById('optionButtons');
+
+const actions = document.getElementById('actions');
+const pic = document.getElementById('pic');
+const letterizer = document.getElementById('letterizer');
 const h1 = document.querySelector('h1').classList;
-let letterizer = document.getElementById('letterizer');
+const translation = document.getElementById('chinese');
+
+
+
+
+
 //let backdrop = document.getElementById('bg');
+
+const defaultMenu = settings.innerHTML;
+let defaultOptions
+
 
 let letterCount;
 let wordCount = 0;
@@ -466,7 +516,7 @@ let sampleList = ['thrall', 'chin', 'splat', 'mouth', 'strong', 'chang']
 let selectedPhonics = []
 let wordQueue = [];
 
-async function spawnButtons(){
+async function createButtons(){
 
     selectedPhonics = []
     wordQueue = [];
@@ -480,14 +530,17 @@ async function spawnButtons(){
         //newButton.onclick = "flip()";
         newButton.id = key;
         newButton.innerHTML = key;
-        buttonGrid.appendChild(newButton);
+        options.appendChild(newButton);
 
         translation.classList.add('clear');
         translation.textContent = "";
     }
+
+    defaultOptions = options.innerHTML;
+
 }
 
-spawnButtons();
+createButtons();
 
 function colorRainbow(hue) {
     colorString = "";
@@ -588,8 +641,8 @@ function flip(it){
 
 async function go(){
     if (selectedPhonics.length > 0) {
-        buttonGrid.innerHTML = "";
-        wrapper.innerText = "";
+        options.innerHTML = "";
+        settings.innerText = "";
 
         actions.innerHTML +=
         '<div class="fixed">' +
@@ -701,6 +754,12 @@ function spanArray(arr){
         letterizer.appendChild(newSpan);
         n++;
     })
+
+    if (imager.checked === true) {
+        setTimeout(function(){
+            changePic(currentWord)}
+        , 500);
+    }
 }
 
 function loadNextWord(){
@@ -710,6 +769,7 @@ function loadNextWord(){
 
     letterCount = 0;
     currentWord = wordQueue[wordCount];
+
     letterizer.innerHTML = currentWord;
     
     splitIntoLetters();
@@ -823,19 +883,31 @@ function next(){
 
             // console.log(allLetters);
 
-            Array.prototype.forEach.call(allLetters, function(el) {
-                el.classList.add('spin');
-            });
+            // re-add to spin the letters on word completion
 
+            
+            Array.prototype.forEach.call(allLetters, function(el) {
+                //el.classList.add('spin');
+                el.classList.add('letters-when-reveal-pic');
+            });
+            
             
             translation.textContent = translations[currentWord];
             translation.classList.remove('clear');
+            
+            if (imager.checked === true){
+                toggleImg()
+            }
 
             //changeBackground(currentWord);
 
         } else {
             wordCount++;
             
+            if (imager.checked === true){
+                toggleImg()
+            }
+
             if (wordCount < wordQueue.length){
                 loadNextWord();
             }
@@ -846,13 +918,9 @@ function next(){
     } else if (wordCount == wordQueue.length) {
         letterizer.innerHTML = "";
         actions.innerHTML = "";
-        spawnButtons();
-        wrapper.innerHTML = 
-            '<input type="checkbox" class="checkbox" id="shuffler">' +
-            '<label for="shuffler"> shuffle</label>'+
-            '<input type="checkbox" class="checkbox" id="rainbower">' +
-            '<label for="rainbower"> rainbow</label>' +
-            '<button class="go" onclick="go()" id="go">GO</button>'
+        //options.innerHTML = defaultOptions;
+        createButtons();
+        settings.innerHTML = defaultMenu;
     }
 }
 
@@ -882,4 +950,32 @@ function changeBackground(name){
         backdrop.style.backgroundImage="url(BGs/"+name+".jpg)";
         //backdrop.style.backgroundImage="url(BGs/"+name+".svg)";
     }
+}
+
+async function toggleImg(){
+    classes = pic.classList;
+
+    if (classes.contains('disappear')) {
+        classes.remove('disappear')
+    } else {
+        classes.add('disappear');
+    }
+        
+}
+
+function changePic(word) {
+    let key
+    
+    if (word) {
+        key = unsplashImages[word];
+    } else {
+        const keys = Object.keys(unsplashImages);
+        const len = keys.length;
+        const rnd = Math.floor(Math.random() * len);
+        key = unsplashImages[keys[rnd]];
+    }
+    
+    console.log(key);
+
+    pic.src = key;
 }

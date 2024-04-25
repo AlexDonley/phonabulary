@@ -1,16 +1,16 @@
+/* FORMATTING FOR FULL PAGE */
+
 * {
     margin: 0;
-    padding: 10px; 
+    padding: 0px; 
     box-sizing: border-box;
     font-family: century gothic, sans-serif;
-    
 }
 
 @font-face {
     font-family: 'ZH_zhuyin';
     src: url(zhuyin.ttf);
 }
-
 
 ::-webkit-scrollbar {
     display: none;
@@ -20,11 +20,14 @@ body {
     color: white;
     background-color: rgb(56, 56, 56);
     margin: 0;
-    padding: 0;
+    padding: 10;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
 }
 
 .rainbow{
-    isolation: isolate;
+    z-index: 1;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -33,10 +36,31 @@ body {
     transition: all 0.4s ease-in-out;
 }
 
-.buttonGrid {
+/* FORMATTING FOR MENU */
+
+.menu{
     display: grid;
-    margin: -20px;
+    grid-template-columns: 200px min-content;
+}
+
+.settings {
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 200px;
+}
+
+.options{
+    width: -webkit-calc(100% - 240px);
+    width:    -moz-calc(100% - 240px);
+    width:         calc(100vw - 240px);
+    max-height: 100%;
+    display: grid;
+    margin: 10px;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    overflow: auto;
 }
 
 button {
@@ -48,17 +72,6 @@ button {
     /* min-width: 100px; */
 }
 
-.wrapper {
-    text-align: center;
-}
-
-.test {
-    font-size: 4rem;
-    position: absolute;
-    top: 50;
-    left: 50;
-    text-align: center;
-}
 
 .selectedPhonics {
     background-color: red;
@@ -66,9 +79,9 @@ button {
 }
 
 .go {
-    border-radius: 500px;
     font-size: 6rem;
     height: 180px;
+    clip-path: circle(48% at 50% 50%);
 }
 
 .go:hover {
@@ -85,20 +98,7 @@ label {
     font-size: 2rem;
 }
 
-.chinese {
-    font-family: ZH_zhuyin;
-    margin: 0;
-    padding: 0;
-    writing-mode: vertical-rl;
-    position: absolute;
-    font-size: 9rem;
-    width: 9rem;
-    right: 16vw;
-    top: 200px;
-    z-index: -1;
-    opacity: 1;
-    transition: all 0.4s ease;
-}
+/* FORMATTING FOR WORD QUEUE */
 
 .clear{
     opacity: 0;
@@ -106,17 +106,58 @@ label {
     transform: translateX(50px);
 }
 
-h1 {
-    
+.letters {
+    isolation: isolate;
+    z-index: 2;
     color: rgb(255, 255, 255);
     font-size: 16rem;
-    font-family: sans-serif;
-    text-align: center;
     line-height: 50vh;
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-text-stroke: 2px black;
+    text-shadow: black 0 0 50px;
+    /*mix-blend-mode: difference;*/
 }
 
-.active-letters{
-    margin-top: 15vh;
+span {
+    transition: all 0.4s ease;
+    opacity: .5;
+    color: white;
+    display: inline-block;
+    /*filter: blur(5px);*/
+}
+
+.bigger {
+    /*transform: translateY(-50px) rotate(-45deg);*/
+    font-size: 20rem;
+    opacity: 1;
+    filter: blur(0px);
+}
+
+.spin{
+    rotate: 360deg;
+}
+
+.letters-when-reveal-pic {
+    color: #fff;
+    mix-blend-mode: difference;
+}
+
+.chinese {
+    font-family: ZH_zhuyin;
+    writing-mode: vertical-rl;
+    position: absolute;
+    font-size: 9rem;
+    width: 9rem;
+    left: 85%;
+    top: 50%;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    opacity: 1;
+    transition: all 0.4s ease;
 }
 
 .actions {
@@ -125,8 +166,8 @@ h1 {
 }
 
 .fixed {
-    position: absolute;
-    bottom: 100px;
+    position: fixed;
+    top: 90%;
 }
 
 button.fixedbtn {
@@ -140,22 +181,20 @@ button.fixedbtn {
     padding: 10px;
 }
 
-span {
-    transition: all 0.4s ease;
-    opacity: .5;
-    color: white;
-    display: inline-block;
-    margin: -10px;
-    /*filter: blur(5px);*/
+.image {
+    z-index: -1;
+    height: 80vw;
+    width: 80vw;
+    position: fixed;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    clip-path: circle(45% at 50% 50%);
+    object-fit: cover;
+    transition: all 0.5s ease-in-out;
 }
 
-.bigger {
-    /*transform: translateY(-50px) rotate(-45deg);*/
-    font-size: 20rem;
-    opacity: 1;
-    filter: blur(0px);
-}
-
-.spin{
-    rotate: 360deg;
+.disappear{
+    clip-path: circle(0px at 50% 50%);
+    /*filter: brightness(0);*/
 }
