@@ -13,6 +13,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="script.js" defer></script>
     <title>Phonabulary</title>
 </head>
@@ -22,12 +24,25 @@
     <div class="menu" id="menu">
         
         <div class="settings" id="settings">
-            <input type="checkbox" class="checkbox" id="shuffler">
-            <label for="shuffler"> shuffle</label>
-            <input type="checkbox" class="checkbox" id="rainbower">
-            <label for="rainbower"> rainbow</label>
-            <input type="checkbox" class="checkbox" id="imager">
-            <label for="imager"> pictures</label>
+            <div>
+                <input type="checkbox" class="checkbox" id="shuffler">
+                <label for="shuffler" class="to-be-changed">
+                    <ion-icon name="shuffle-outline"></ion-icon>
+                </label>
+            </div>
+            <div>
+                <input type="checkbox" class="checkbox" id="rainbower">
+                <label for="rainbower" class="to-be-changed">
+                    <ion-icon name="color-palette"></ion-icon>
+                </label>
+            </div>
+            <div>
+                <input type="checkbox" class="checkbox" id="imager">
+                <label for="imager" class="to-be-changed">
+                    <ion-icon name="image"></ion-icon>
+                </label>
+            </div>
+            
             <button class="go" onclick="go()" id="go">GO</button>
         </div>
 
@@ -42,7 +57,9 @@
 
     <h1 class="letters" id="letterizer"></h1>
 
-    <div class="chinese" id="chinese"></div>
+    <div class="chinese-wrap clear" id="chineseWrap">
+        <div class="chinese" id="chinese">預設</div>
+    </div>
 
     <div class="actions" id="actions"></div>
 

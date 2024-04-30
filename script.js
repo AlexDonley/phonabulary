@@ -104,6 +104,7 @@ const sp = ["spy", "speak", "spell"]
 const st = ["stay", "star", "start"]
 const tion = ["nation", "station", "lotion"]
 const sion = ["abrasion", "pension", "lesion"]
+const difficultWords = ["strengths", "pigheaded", "diode", "recycle", "one"]
 
 
 const graphemes = {
@@ -121,8 +122,6 @@ const graphemes = {
     'tion': tion, 'sion': sion
 }
 
-rainbowRibbon = []
-
 const myDocument = document.documentElement;
 
 const rainbow = document.getElementById('rainbow');
@@ -137,10 +136,8 @@ const actions = document.getElementById('actions');
 const pic = document.getElementById('pic');
 const letterizer = document.getElementById('letterizer');
 const h1 = document.querySelector('h1').classList;
+const chineseWrap = document.getElementById('chineseWrap');
 const translation = document.getElementById('chinese');
-
-
-
 
 
 //let backdrop = document.getElementById('bg');
@@ -148,6 +145,8 @@ const translation = document.getElementById('chinese');
 const defaultMenu = settings.innerHTML;
 let defaultOptions
 
+let rainbowRibbon = []
+let rainbowIndexer = []
 
 let letterCount;
 let wordCount = 0;
@@ -157,16 +156,18 @@ let currentWord;
 let n;
 let hue;
 
-let colors = ['yellow', 'cyan', 'orange', 'pink', 'coral'];
-let input = "The quick brown fox jumps over the lazy dog."
-let sampleList = ['thrall', 'chin', 'splat', 'mouth', 'strong', 'chang']
-
 let selectedPhonics = []
 let wordQueue = [];
 let EN_ZH_img
 
+let rainbowing = false;
+let imging = false;
+let shuffling = false;
+
+let speech = new SpeechSynthesisUtterance();
+
 function loadJSON(){
-    fetch('./EN_ZH_img.json')
+    fetch('./JSON/EN_ZH_img.json')
     .then(res => {
         if (res.ok) {
             console.log('SUCCESS');
@@ -192,18 +193,15 @@ async function createButtons(){
     wordQueue = [];
 
     for (const key of Object.keys(graphemes)) {
-        //console.log(key);
-        
+                
         h1.remove('active-letters');
         
         let newButton = document.createElement("button");
-        //newButton.onclick = "flip()";
         newButton.id = key;
         newButton.innerHTML = key;
         options.appendChild(newButton);
 
-        translation.classList.add('clear');
-        translation.textContent = "";
+        chineseWrap.classList.add('clear');
     }
 
     defaultOptions = options.innerHTML;
@@ -222,10 +220,12 @@ function colorRainbow(hue) {
         for (let n=0; n < 60; n++) {
             tempArray = [defaultColor, 5 * n / 3];
             rainbowRibbon.push(tempArray);
+            rainbowIndexer.push(n);
         }
 
     } else {
-        
+        hue -=1;
+
         n = 0;
 
         hslString = 'hsl(' + hue + ' 80% 80%)';
@@ -237,15 +237,12 @@ function colorRainbow(hue) {
         while (rainbowRibbon[n][1] < colorIndex[1]) {
             n++;
 
-            console.log(rainbowRibbon[n][1]);
-            console.log(colorIndex[1]);
-                       
+            // console.log(rainbowRibbon[n][1]);
+            // console.log(colorIndex[1]);         
         }
         
         rainbowRibbon.splice(n, 1, colorIndex);
 
-        
-        //console.log(rainbowRibbon);
     }
 
     n = 0;
@@ -261,7 +258,7 @@ function colorRainbow(hue) {
         
     })
     colorString = 'linear-gradient(90deg, ' + colorString + ')'
-    console.log(colorString);
+    //console.log(colorString);
 
     rainbow.style.background = colorString;
 }
@@ -270,11 +267,25 @@ colorRainbow();
 
 
 const buttons = document.getElementsByTagName("button");
+
 const buttonPressed = e => {
     let clickedButton = e.target.id;
-    //console.log(clickedButton);  // Get ID of Clicked Element
+    console.log(clickedButton);  // Get ID of Clicked Element
     if (!(clickedButton == 'go' || clickedButton == 'fixedbtn')){
-        flip(clickedButton)
+        if (e.target.classList.contains("selectedPhonics")){
+            e.target.classList.remove("selectedPhonics");
+        } else {
+            e.target.classList.add("selectedPhonics");
+        }
+        if (!(clickedButton == '')){
+            if (selectedPhonics.includes(clickedButton)){
+                // console.log(selectedPhonics[selectedPhonics.indexOf(it)]);
+                selectedPhonics.splice(selectedPhonics.indexOf(clickedButton), 1)
+            } else {
+                selectedPhonics.push(clickedButton);
+            }
+            console.log(selectedPhonics);
+        }
     }
 }
 
@@ -283,29 +294,17 @@ for (let button of buttons) {
 }
 
 
-// flip button
+// this isn't working well, check back later
 
-function flip(it){
-    // console.log('flip');
-    
-    let flipperClass = document.getElementById(it).classList;
-
-    if (flipperClass.contains("selectedPhonics")){
-        flipperClass.remove("selectedPhonics");
-    } else {
-        flipperClass.add("selectedPhonics");
+function toggleSetting(setting) {
+    if (setting == 'imging') {
+        imging = !imging;
+    } else if (setting == 'shuffling'){
+        shuffling = !shuffling;
+    } else if (setting == 'rainbowing') {
+        rainbowing = !rainbowing;
     }
-
-    if (selectedPhonics.includes(it)){
-        // console.log(selectedPhonics[selectedPhonics.indexOf(it)]);
-        selectedPhonics.splice(selectedPhonics.indexOf(it), 1)
-    } else {
-        selectedPhonics.push(it);
-    }
-
-    console.log(selectedPhonics);
 }
-
 
 // go button deletes elements in the container and loads list of words to read
 
@@ -434,8 +433,9 @@ function spanArray(arr){
 
 function loadNextWord(){
     // console.log(wordQueue);
-    translation.classList.add('clear');
-    translation.textContent = "";
+    // translation.classList.add('clear');
+    chineseWrap.classList.add('clear');
+    //translation.textContent = "";
 
     letterCount = 0;
     currentWord = wordQueue[wordCount];
@@ -460,13 +460,21 @@ function shuffle(arr){
     return shuffled;
 }
 
+//split Chinese translations by commas
+
+function splitTranslations(str){
+    let eachTranslation = str.split(',');
+    console.log(eachTranslation);
+    return eachTranslation[0];
+}
+
 //fullscreen button 
 
 function fullscreen(){
-    console.log(fullbtn);
+    //console.log(fullbtn);
     
     if (fullbtn.innerHTML == "fullscreen"){
-        console.log("fullscreen")
+        //console.log("fullscreen")
         
         if(myDocument.requestFullscreen){
             myDocument.requestFullscreen();
@@ -500,15 +508,20 @@ function fullscreen(){
 //keyboard controls
 
 window.addEventListener('keydown', (ev) =>{
-    console.log(ev)
+    //console.log(ev)
     if (ev.key == 'ArrowUp' || ev.key == 'PageUp'){
         previous();
     } else if (ev.key == 'ArrowDown'|| ev.key == 'PageDown'){
         next();
     } else if (ev.key == 'b'){
+        
+        speak(currentWord);
+        
         //changeBackground(currentWord);
     }
 })
+
+let huePick
 
 function next(){
     if (wordCount < wordQueue.length){
@@ -516,12 +529,22 @@ function next(){
             let currentLetter = document.getElementById('span' + letterCount)
             currentLetter.classList.add('bigger');
             // this code is for random colored letters
-            hue = Math.floor(Math.random() * 60) * 6
+
+            if (rainbowIndexer.length > 0) {
+                huePick = rainbowIndexer[Math.floor(Math.random() * rainbowIndexer.length)];
+                rainbowIndexer.splice(rainbowIndexer.indexOf(huePick), 1);
+                console.log(rainbowIndexer);
+                hue = huePick * 6
+            } else {
+                hue = Math.floor(Math.random() * 60) * 6;
+            }
+
 
             // switch the the code below for rainbow lettering
             // hue = 360 * (letterCount) / wordLength
             currentLetter.style.color = `hsl(${hue}, 80%, 80%)`;
             if (rainbower.checked === true){
+                hue += 1;
                 colorRainbow(hue);
             }
 
@@ -562,8 +585,9 @@ function next(){
             });
             
             index = EN_ZH_img.findIndex(item => item.English === currentWord);
-            translation.textContent = EN_ZH_img[index].Chinese;
-            translation.classList.remove('clear');
+            translation.textContent = splitTranslations(EN_ZH_img[index].Chinese);
+            //translation.classList.remove('clear');
+            chineseWrap.classList.remove('clear');
             
             if (imager.checked === true){
                 toggleImg()
@@ -652,4 +676,9 @@ function changePic(word) {
     //console.log(key);
 
     pic.src = key;
+}
+
+function speak(word){
+    speech.text = word;
+    window.speechSynthesis.speak(speech);
 }
