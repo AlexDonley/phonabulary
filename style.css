@@ -9,7 +9,7 @@
 
 @font-face {
     font-family: 'ZH_zhuyin';
-    src: url(font/zhuyin.ttf);
+    src: url(Font/zhuyin.ttf);
 }
 
 ::-webkit-scrollbar {
