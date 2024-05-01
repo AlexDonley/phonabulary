@@ -187,7 +187,7 @@ span {
     writing-mode: vertical-rl;
     font-size: 18vh;
     font-family: ZH_zhuyin;
-    letter-spacing: -8vh;
+    /*letter-spacing: -8vh;*/
     white-space: nowrap;
 }
 
