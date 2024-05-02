@@ -425,9 +425,9 @@ function spanArray(arr){
     })
 
     if (imager.checked === true) {
-        //setTimeout(function(){
+        setTimeout(function(){
             changePic(currentWord)
-        //}, 500);
+        }, 500);
     }
 }
 
@@ -680,5 +680,5 @@ function changePic(word) {
 
 function speak(word){
     speech.text = word;
-    window.speechSynthesis.speak(speech);
+    window.speechSynthesis.speak(speech).rate(0.5);
 }
