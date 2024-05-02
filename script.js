@@ -3,7 +3,15 @@ const vows = ['a', 'e', 'i', 'o', 'u', 'y']
 const cons = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z']
 const semivows = ['w', 'y']
 
-//have to fix hr, not a real digraph
+const vowelDigraphs = [
+    "ae", "ai", "ao", "au", "aw", "ay", "ar",
+    "ea", "ee", "ei", "eo", "eu", "ew", "ey", "er",
+    "ia", "ie", "io", "iu", "ir",
+    "oa", "oe", "oi", "oo", "ou", "ow", "oy", "or",
+    "ua", "ue", "ui", "uo", "ur"
+]
+
+// false digraph: "hr"
 
 const onsetDigraphs = [
     "ch", "ph", "sh", "th", "wh",
@@ -13,25 +21,20 @@ const onsetDigraphs = [
     "kn", "gn", "pn", "pt"
 ]
 
-const vowelDigraphs = [
-    "ae", "ai", "ao", "au", "aw", "ay", "ar",
-    "ea", "ee", "ei", "eo", "eu", "ew", "ey", "er",
-    "ia", "ie", "io", "iu", "ir",
-    "oa", "oe", "oi", "oo", "ou", "ow", "oy", "or",
-    "ua", "ue", "ui", "uo", "ur"
-]
-
 const onsetTrigraphs = [
     "scr", "str", "spr", "spl", "thr"
 ]
 
+// false digraphs: "ms" "ns", have to change the logic of how it determines tri and digraphs
+
 const codaDigraphs = [
-    "th", "ck", "ch", "ct", "lk", "ll", "lp", "lt", "ff", "mb", "mp", "nd", "ng", "nk", "nt", 
-    "rk", "rt", "sh", "sk", "ss", "st"
+    "bb", "cc", "ck", "ch", "ct", "dd", "ff", "ft", "gg", "lk", "ll", "lp", "lt", 
+    "mb", "mm", "mp", "ms", "nc", "nd", "ng", "nk", "nn", "nt", "ns", "pp", 
+    "rb", "rc", "rd", "rk", "rr", "rt", "sh", "sk", "ss", "st", "th", "tt"
 ]
 
 const codaTrigraphs = [
-    "nch"
+    "mph", "mst", "nch", "nst"
 ]
 
 const nonlets = [
@@ -135,15 +138,11 @@ const options = document.getElementById('optionButtons');
 const actions = document.getElementById('actions');
 const pic = document.getElementById('pic');
 const letterizer = document.getElementById('letterizer');
-const h1 = document.querySelector('h1').classList;
 const chineseWrap = document.getElementById('chineseWrap');
 const translation = document.getElementById('chinese');
 
 
 //let backdrop = document.getElementById('bg');
-
-const defaultMenu = settings.innerHTML;
-let defaultOptions
 
 let rainbowRibbon = []
 let rainbowIndexer = []
@@ -187,24 +186,19 @@ function loadJSON(){
 
 loadJSON();
 
-async function createButtons(){
+function createButtons(){
 
     selectedPhonics = []
     wordQueue = [];
 
     for (const key of Object.keys(graphemes)) {
-                
-        h1.remove('active-letters');
         
         let newButton = document.createElement("button");
         newButton.id = key;
         newButton.innerHTML = key;
         options.appendChild(newButton);
 
-        chineseWrap.classList.add('clear');
     }
-
-    defaultOptions = options.innerHTML;
 
 }
 
@@ -269,17 +263,19 @@ colorRainbow();
 const buttons = document.getElementsByTagName("button");
 
 const buttonPressed = e => {
+    
     let clickedButton = e.target.id;
     console.log(clickedButton);  // Get ID of Clicked Element
+    
     if (!(clickedButton == 'go' || clickedButton == 'fixedbtn')){
-        if (e.target.classList.contains("selectedPhonics")){
-            e.target.classList.remove("selectedPhonics");
+        if (e.target.classList.contains("selected-phonics")){
+            e.target.classList.remove("selected-phonics");
         } else {
-            e.target.classList.add("selectedPhonics");
+            e.target.classList.add("selected-phonics");
         }
+        
         if (!(clickedButton == '')){
             if (selectedPhonics.includes(clickedButton)){
-                // console.log(selectedPhonics[selectedPhonics.indexOf(it)]);
                 selectedPhonics.splice(selectedPhonics.indexOf(clickedButton), 1)
             } else {
                 selectedPhonics.push(clickedButton);
@@ -310,23 +306,17 @@ function toggleSetting(setting) {
 
 async function go(){
     if (selectedPhonics.length > 0) {
-        options.innerHTML = "";
-        settings.innerText = "";
-
-        actions.innerHTML +=
-        '<div class="fixed">' +
-            '<button type=btn class="fixedbtn" id="btn" onClick="previous()">previous</button>' +
-            '<button type=btn class="fixedbtn" id="fullbtn" onClick="fullscreen()">fullscreen</button>' +
-            '<button type=btn class="fixedbtn" id="btn" onClick="next()">next</button>' +
-        '</div>'
-    
-        fullbtn = document.getElementById('fullbtn');
-        h1.add('active-letters');
+        
+        options.classList.add('hide');
+        settings.classList.add('hide');
+        actions.classList.remove('hide');
 
         createQueue();
         if (shuffler.checked === true){
             wordQueue = shuffle(wordQueue);
         }
+
+        wordCount = 0;
         loadNextWord();
     }
 };
@@ -334,13 +324,13 @@ async function go(){
 function createQueue(){
     wordQueue = [];
 
-    let ent;
+    let item;
     let phone;
     let nextArray = [];
 
 
-    for (ent in selectedPhonics){
-        phone = selectedPhonics[ent];
+    for (item in selectedPhonics){
+        phone = selectedPhonics[item];
         nextArray = graphemes[phone];
         console.log(nextArray);
         wordQueue = wordQueue.concat(nextArray)
@@ -365,9 +355,11 @@ async function splitIntoLetters(){
 }
 
 function joinIntoClusters(arr){
+    
     let n = 0;
     let vowelTest;
-    let codaTest;
+    let codaTest1;
+    let codaTest2;
     let onsetTest1;
     let onsetTest2;
 
@@ -387,10 +379,15 @@ function joinIntoClusters(arr){
                 arr.splice(n, 3, (char + 'gh'));
             }
 
-            codaTest = arr[n+1] + arr[n+2];
-            //console.log(codaTest);
-            if (codaDigraphs.includes(codaTest)) {
-                arr.splice((n+1), 2, codaTest);
+            codaTest1 = arr[n+1] + arr[n+2];
+            if (codaDigraphs.includes(codaTest1)) {
+                codaTest2 = (codaTest1 + arr[n+3]);
+                if (codaTrigraphs.includes(codaTest2)) {
+                    arr. splice((n + 1), 3, codaTest2);
+                } else {
+                    arr.splice((n + 1), 2, codaTest1);
+                }
+                
             }
 
             onsetTest1 = (arr[n-2] + arr[n-1]).toString();
@@ -398,7 +395,7 @@ function joinIntoClusters(arr){
             if (onsetDigraphs.includes(onsetTest1.toLowerCase())){
                 onsetTest2 = (arr[n-3] + onsetTest1).toString();
                 if (onsetTrigraphs.includes(onsetTest2)){
-                    arr. splice((n - 3), 3, onsetTest2)
+                    arr. splice((n - 3), 3, onsetTest2);
                 } else{
                     arr.splice((n - 2), 2, onsetTest1);
                 }                
@@ -418,7 +415,6 @@ function spanArray(arr){
     arr.forEach(character =>{
         const newSpan = document.createElement('span');
         newSpan.setAttribute('id', ("span" + n))
-        //newSpan.classList.add('small');
         newSpan.innerText = character;
         letterizer.appendChild(newSpan);
         n++;
@@ -432,10 +428,8 @@ function spanArray(arr){
 }
 
 function loadNextWord(){
-    // console.log(wordQueue);
-    // translation.classList.add('clear');
+
     chineseWrap.classList.add('clear');
-    //translation.textContent = "";
 
     letterCount = 0;
     currentWord = wordQueue[wordCount];
@@ -452,7 +446,6 @@ function shuffle(arr){
     unshuffled.forEach(word =>{
         randomPos = Math.floor(Math.random() * shuffled.length);
 
-        //console.log(randomPos);
         shuffled.splice(randomPos, 0, word);
     })
     
@@ -530,7 +523,7 @@ function next(){
             currentLetter.classList.add('bigger');
             // this code is for random colored letters
 
-            if (rainbowIndexer.length > 0) {
+            if (rainbowIndexer.length > 0 && rainbower.checked === true) {
                 huePick = rainbowIndexer[Math.floor(Math.random() * rainbowIndexer.length)];
                 rainbowIndexer.splice(rainbowIndexer.indexOf(huePick), 1);
                 console.log(rainbowIndexer);
@@ -611,10 +604,11 @@ function next(){
         }
     } else if (wordCount == wordQueue.length) {
         letterizer.innerHTML = "";
-        actions.innerHTML = "";
-        //options.innerHTML = defaultOptions;
-        createButtons();
-        settings.innerHTML = defaultMenu;
+        actions.classList.add('hide');
+        chineseWrap.classList.add('clear');
+        options.classList.remove('hide')
+        settings.classList.remove('hide');
+        wordCount = 0;
     }
 }
 
@@ -665,7 +659,7 @@ function changePic(word) {
     
     if (word) {
         index = EN_ZH_img.findIndex(item => item.English === word)
-        key = EN_ZH_img[index].Unsplash;
+        key = EN_ZH_img[index].Unsplash + "?h=600&auto=format&fit=crop&q=5";
     } else {
         const keys = Object.keys(unsplashImages);
         const len = keys.length;
@@ -679,6 +673,13 @@ function changePic(word) {
 }
 
 function speak(word){
+    const synth = window.speechSynthesis;
+
+    if (synth.speaking) {
+        synth.cancel();
+    }
+    
     speech.text = word;
-    window.speechSynthesis.speak(speech).rate(0.5);
+    speech.rate = 0.4
+    synth.speak(speech);
 }

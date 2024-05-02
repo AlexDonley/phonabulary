@@ -28,7 +28,7 @@ body {
 
 .rainbow{
     z-index: -2;
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 0px;
     height: 5px;
@@ -48,7 +48,7 @@ body {
 }
 
 input[type=checkbox]:checked ~ .to-be-changed {
-	background: red;
+	background: green;
     color: white;
 }
 
@@ -100,11 +100,10 @@ button {
     border: 0px;
     margin: 5px;
     font-size: 3rem;
-    /* min-width: 100px; */
 }
 
 
-.selectedPhonics {
+.selected-phonics {
     background-color: red;
     color: white;
 }
@@ -174,7 +173,7 @@ span {
     transform: translate(-50%, -50%);
     text-align: middle;
     position: absolute;
-    z-index: 1;
+    z-index: -1;
     opacity: 1;
     background: rgb(201, 201, 201);
     border-radius: 50px;
@@ -187,9 +186,14 @@ span {
     writing-mode: vertical-rl;
     font-size: 18vh;
     font-family: ZH_zhuyin;
-    /*letter-spacing: -8vh;*/
     white-space: nowrap;
 }
+
+@-moz-document url-prefix() {
+    .chinese {
+        letter-spacing: -8vh;
+    }
+  }
 
 .actions {
     justify-content: center;
@@ -232,4 +236,8 @@ button.fixedbtn {
 .disappear{
     clip-path: circle(0px at 50% 50%);
     /*filter: brightness(0);*/
+}
+
+.hide {
+    display: none;
 }
