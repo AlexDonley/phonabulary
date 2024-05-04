@@ -24,26 +24,28 @@
     <div class="menu" id="menu">
         
         <div class="settings" id="settings">
-            <div>
-                <input type="checkbox" class="checkbox" id="shuffler">
-                <label for="shuffler" class="to-be-changed">
-                    <ion-icon name="shuffle-outline"></ion-icon>
-                </label>
+            <div class="side-wrapper">
+                <div>
+                    <input type="checkbox" class="checkbox" id="shuffler">
+                    <label for="shuffler" class="to-be-changed">
+                        <ion-icon name="shuffle-outline"></ion-icon>
+                    </label>
+                </div>
+                <div>
+                    <input type="checkbox" class="checkbox" id="rainbower">
+                    <label for="rainbower" class="to-be-changed">
+                        <ion-icon name="color-palette"></ion-icon>
+                    </label>
+                </div>
+                <div>
+                    <input type="checkbox" class="checkbox" id="imager">
+                    <label for="imager" class="to-be-changed">
+                        <ion-icon name="image"></ion-icon>
+                    </label>
+                </div>
+                
+                <button class="go disappear" onclick="go()" id="goButton">GO</button>
             </div>
-            <div>
-                <input type="checkbox" class="checkbox" id="rainbower">
-                <label for="rainbower" class="to-be-changed">
-                    <ion-icon name="color-palette"></ion-icon>
-                </label>
-            </div>
-            <div>
-                <input type="checkbox" class="checkbox" id="imager">
-                <label for="imager" class="to-be-changed">
-                    <ion-icon name="image"></ion-icon>
-                </label>
-            </div>
-            
-            <button class="go" onclick="go()" id="go">GO</button>
         </div>
 
         <div class="options" id="optionButtons">
@@ -61,7 +63,7 @@
         <div class="chinese" id="chinese">預設</div>
     </div>
 
-    <div class="actions" id="actions">
+    <div class="actions hide" id="actions">
         <div class="fixed">
             <button type=btn class="fixedbtn" id="btn" onClick="previous()">previous</button>
             <button type=btn class="fixedbtn" id="fullbtn" onClick="fullscreen()">fullscreen</button>

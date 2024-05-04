@@ -34,7 +34,7 @@ const codaDigraphs = [
 ]
 
 const codaTrigraphs = [
-    "mph", "mst", "nch", "nst"
+    "mph", "mst", "nch", "ndt", "nst"
 ]
 
 const nonlets = [
@@ -133,6 +133,7 @@ const rainbower = document.getElementById('rainbower');
 const imager = document.getElementById('imager');
 const menu = document.getElementById('menu');
 const settings = document.getElementById('settings');
+const goButton = document.getElementById('goButton');
 const options = document.getElementById('optionButtons');
 
 const actions = document.getElementById('actions');
@@ -158,10 +159,6 @@ let hue;
 let selectedPhonics = []
 let wordQueue = [];
 let EN_ZH_img
-
-let rainbowing = false;
-let imging = false;
-let shuffling = false;
 
 let speech = new SpeechSynthesisUtterance();
 
@@ -283,24 +280,18 @@ const buttonPressed = e => {
             console.log(selectedPhonics);
         }
     }
+
+    if (selectedPhonics.length > 0) {
+        goButton.classList.remove('disappear');
+    } else {
+        goButton.classList.add('disappear');
+    }
 }
 
 for (let button of buttons) {
   button.addEventListener("click", buttonPressed);
 }
 
-
-// this isn't working well, check back later
-
-function toggleSetting(setting) {
-    if (setting == 'imging') {
-        imging = !imging;
-    } else if (setting == 'shuffling'){
-        shuffling = !shuffling;
-    } else if (setting == 'rainbowing') {
-        rainbowing = !rainbowing;
-    }
-}
 
 // go button deletes elements in the container and loads list of words to read
 
@@ -603,12 +594,18 @@ function next(){
 
         }
     } else if (wordCount == wordQueue.length) {
-        letterizer.innerHTML = "";
+        letterizer.innerHTML = '';
+        
+        
         actions.classList.add('hide');
         chineseWrap.classList.add('clear');
-        options.classList.remove('hide')
+        
+        
+        options.classList.remove('hide');
         settings.classList.remove('hide');
+        
         wordCount = 0;
+        wordQueue = [];
     }
 }
 

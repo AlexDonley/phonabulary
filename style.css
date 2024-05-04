@@ -20,10 +20,10 @@ body {
     color: white;
     background-color: rgb(56, 56, 56);
     margin: 0;
-    padding: 10;
+    padding: 0;
     height: 100vh;
     width: 100vw;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .rainbow{
@@ -68,30 +68,37 @@ label {
 	padding: 5px;
     margin: 5px;
 	border-radius: 50%;
-	color: white;
 	font-weight: bold;
     transition: color .2s ease-in-out;
 }
 
 .settings {
+    height: 100vh;
+    width: 240px;
+    padding: 30px;
+    overflow: none;
+}
+
+.side-wrapper{
     align-items: center;
     text-align: center;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    width: 200px;
-    padding: 20px;
+    position: absolute;
+    bottom: 20px;
 }
 
 .options{
     width: -webkit-calc(100% - 240px);
     width:    -moz-calc(100% - 240px);
     width:         calc(100vw - 240px);
-    max-height: 100%;
+    max-height: 100vh !important;
     display: grid;
-    margin: 10px;
+    padding: 15px;
+    position: absolute;
+    right: 0px;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    overflow: auto;
+    overflow-y: auto;
 }
 
 button {
@@ -111,12 +118,15 @@ button {
 .go {
     font-size: 6rem;
     height: 180px;
-    clip-path: circle(48% at 50% 50%);
+    width: 180px;
+    clip-path: circle(50% at 50% 50%);
+    transition: rotate 0.5s ease-in-out;
+    transition: clip-path 0.5s ease-in-out;
 }
 
 .go:hover {
     background-color: lightgreen;
-    rotate: 10deg;
+    rotate: 360deg;
 }
 
 .checkbox {
@@ -177,14 +187,14 @@ span {
     opacity: 1;
     background: rgb(201, 201, 201);
     border-radius: 50px;
-    padding: 15px;
+    padding: 40px;
     transition: all 0.4s ease;
 }
 
 .chinese {
     color: black;
     writing-mode: vertical-rl;
-    font-size: 18vh;
+    font-size: 15vh;
     font-family: ZH_zhuyin;
     white-space: nowrap;
 }
@@ -221,7 +231,7 @@ button.fixedbtn {
     height: 100vh;
     position: fixed;
     top: 50%;
-    left: 25%;
+    left: 18%;
     transform: translate(-50%, -50%);
     clip-path: circle(50% at 50% 50%);
     object-fit: cover;
