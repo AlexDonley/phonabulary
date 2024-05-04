@@ -264,7 +264,7 @@ const buttonPressed = e => {
     let clickedButton = e.target.id;
     console.log(clickedButton);  // Get ID of Clicked Element
     
-    if (!(clickedButton == 'go' || clickedButton == 'fixedbtn')){
+    if (!(clickedButton == 'goButton' || clickedButton == 'fixedbtn')){
         if (e.target.classList.contains("selected-phonics")){
             e.target.classList.remove("selected-phonics");
         } else {
