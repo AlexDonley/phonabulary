@@ -430,19 +430,25 @@ function loadNextWord(){
     splitIntoLetters();
 }
 
+// SHUFFLER SNIP
+// takes an unshuffled array and returns a shuffled array
+
 function shuffle(arr){
     let unshuffled = arr;
     let shuffled = [];
 
-    unshuffled.forEach(word =>{
-        randomPos = Math.floor(Math.random() * shuffled.length);
+    // every item in the unshuffled list is inserted at a random possible position in the shuffled list
 
+    unshuffled.forEach(word =>{
+        randomPos = Math.round(Math.random() * shuffled.length);
         shuffled.splice(randomPos, 0, word);
     })
     
-    console.log(shuffled);
+    // console.log(shuffled);
     return shuffled;
 }
+
+// END OF SHUFFLER SNIP
 
 //split Chinese translations by commas
 
