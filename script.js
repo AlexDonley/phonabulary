@@ -191,6 +191,7 @@ function createButtons(){
     for (const key of Object.keys(graphemes)) {
         
         let newButton = document.createElement("button");
+        newButton.classList.add('phonic');
         newButton.id = key;
         newButton.innerHTML = key;
         options.appendChild(newButton);
@@ -262,9 +263,10 @@ const buttons = document.getElementsByTagName("button");
 const buttonPressed = e => {
     
     let clickedButton = e.target.id;
+    console.log(e.target.classList)
     console.log(clickedButton);  // Get ID of Clicked Element
     
-    if (!(clickedButton == 'goButton' || clickedButton == 'fixedbtn')){
+    if (e.target.classList.contains('phonic')){
         if (e.target.classList.contains("selected-phonics")){
             e.target.classList.remove("selected-phonics");
         } else {
@@ -600,19 +602,26 @@ function next(){
 
         }
     } else if (wordCount == wordQueue.length) {
-        letterizer.innerHTML = '';
-        
-        
-        actions.classList.add('hide');
-        chineseWrap.classList.add('clear');
-        
-        
-        options.classList.remove('hide');
-        settings.classList.remove('hide');
-        
-        wordCount = 0;
-        wordQueue = [];
+        goHome()
     }
+}
+
+function goHome() {
+    letterizer.innerHTML = '';
+        
+    actions.classList.add('hide');
+    chineseWrap.classList.add('clear');
+    
+    
+    options.classList.remove('hide');
+    settings.classList.remove('hide');
+    
+    if (!(pic.classList.contains('disappear'))){
+        toggleImg()
+    }
+
+    wordCount = 0;
+    wordQueue = [];
 }
 
 function previous(){
