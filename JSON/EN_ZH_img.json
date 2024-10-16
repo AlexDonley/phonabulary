@@ -1543,5 +1543,30 @@
         "English": "start",
         "Chinese": "開始",
         "Unsplash": "https://images.unsplash.com/photo-1636056514473-dd532ed74cf2"
+    },
+    {
+        "English": "sat",
+        "Chinese": "坐",
+        "Unsplash": "https://images.unsplash.com/photo-1500214678997-a6adba416e7e"
+    },
+    {
+        "English": "pin",
+        "Chinese": "別針",
+        "Unsplash": "https://images.unsplash.com/photo-1501978811118-e2abb948bb81"
+    },
+    {
+        "English": "tap",
+        "Chinese": "龍頭",
+        "Unsplash": "https://images.unsplash.com/photo-1595514535316-b8c85bf9bbf9"
+    },
+    {
+        "English": "pan",
+        "Chinese": "平底鍋",
+        "Unsplash": "https://images.unsplash.com/photo-1627662168806-efa33a7cda86"
+    },
+    {
+        "English": "nap",
+        "Chinese": "打盹",
+        "Unsplash": "https://images.unsplash.com/photo-1477349585464-d181ff510abb"
     }
 ]

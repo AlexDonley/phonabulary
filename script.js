@@ -109,6 +109,10 @@ const tion = ["nation", "station", "lotion"]
 const sion = ["abrasion", "pension", "lesion"]
 const difficultWords = ["strengths", "pigheaded", "diode", "recycle", "one"]
 
+// Lyn's lessons remove later
+
+const w8 = ["sat", "pin", "tap", "pan", "nap"]
+
 
 const graphemes = {
     'a': a, 'e': e, 'i': i, 'o': o, 'u': u,
@@ -122,7 +126,7 @@ const graphemes = {
     'bl': bl, 'pl': pl, 'cl': cl, 'gl': gl, 'fl': fl, 'sl': sl,
     'br': br, 'pr': pr, 'cr': cr, 'gr': gr, 'fr': fr, 'tr': tr,
     'sc/sk': sc_sk, 'sm': sm, 'sn': sn, 'sw': sw, 'sp': sp, 'st': st,
-    'tion': tion, 'sion': sion
+    'tion': tion, 'sion': sion, 'w8' : w8
 }
 
 const myDocument = document.documentElement;
