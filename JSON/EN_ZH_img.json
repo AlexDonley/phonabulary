@@ -172,7 +172,7 @@
     {
         "English": "set",
         "Chinese": "一套,設置",
-        "Unsplash": ""
+        "Unsplash": "https://images.unsplash.com/photo-1528725151074-bcd375224546"
     },
     {
         "English": "wet",
@@ -377,12 +377,12 @@
     {
         "English": "Pete",
         "Chinese": "男子名",
-        "Unsplash": ""
+        "Unsplash": "https://images.unsplash.com/photo-1644507811783-dab41d6eea3f"
     },
     {
         "English": "these",
         "Chinese": "這些",
-        "Unsplash": ""
+        "Unsplash": "https://images.unsplash.com/photo-1699755621699-011832314a9c"
     },
     {
         "English": "cube",
@@ -397,7 +397,7 @@
     {
         "English": "June",
         "Chinese": "六月",
-        "Unsplash": ""
+        "Unsplash": "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a"
     },
     {
         "English": "use",
@@ -412,7 +412,7 @@
     {
         "English": "each",
         "Chinese": "每個",
-        "Unsplash": ""
+        "Unsplash": "https://images.unsplash.com/photo-1546957222-39a2f31d3644"
     },
     {
         "English": "teach",
@@ -522,12 +522,12 @@
     {
         "English": "the",
         "Chinese": "這(個),那(個)",
-        "Unsplash": ""
+        "Unsplash": "https://images.unsplash.com/photo-1436918671239-a2b72ace4880"
     },
     {
         "English": "than",
         "Chinese": "比",
-        "Unsplash": ""
+        "Unsplash": "https://images.unsplash.com/photo-1519523396617-4c81d5ca919d"
     },
     {
         "English": "that",
@@ -562,7 +562,7 @@
     {
         "English": "which",
         "Chinese": "哪個",
-        "Unsplash": ""
+        "Unsplash": "https://images.unsplash.com/photo-1504281186-f427c16ed131"
     },
     {
         "English": "white",
@@ -677,7 +677,7 @@
     {
         "English": "too",
         "Chinese": "也,太",
-        "Unsplash": ""
+        "Unsplash": "https://images.unsplash.com/photo-1556484687-30636164638b"
     },
     {
         "English": "zoo",
@@ -704,7 +704,7 @@
     {
         "English": "our",
         "Chinese": "我們的",
-        "Unsplash": ""
+        "Unsplash": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac"
     },
     {
         "English": "out",
@@ -739,7 +739,7 @@
     {
         "English": "how",
         "Chinese": "怎麼,如何",
-        "Unsplash": ""
+        "Unsplash": "https://images.unsplash.com/photo-1527689638836-411945a2b57c"
     },
     {
         "English": "now",
@@ -754,15 +754,15 @@
     {
         "English": "own",
         "Chinese": "擁有",
-        "Unsplash": ""
+        "Unsplash": "https://images.unsplash.com/photo-1536535389137-2b6b81c87b32"
     },
     {
         "English": "low",
         "Chinese": "低的,矮的",
-        "Unsplash": "\"https://images.unsplash.com/photo-1561659609-cb4e0cb1178a"
+        "Unsplash": "https://images.unsplash.com/photo-1561659609-cb4e0cb1178a"
     },
     {
-        "English": "https://images.unsplash.com/photo-1567839202073-1fd2dbfa3e97\""
+        "English": "https://images.unsplash.com/photo-1567839202073-1fd2dbfa3e97"
     },
     {
         "English": "row",
@@ -852,7 +852,7 @@
     {
         "English": "may",
         "Chinese": "可能",
-        "Unsplash": ""
+        "Unsplash": "https://images.unsplash.com/photo-1620247405684-8352d6d7ce09"
     },
     {
         "English": "pay",
@@ -872,12 +872,12 @@
     {
         "English": "Paul",
         "Chinese": "男子名",
-        "Unsplash": ""
+        "Unsplash": "https://images.unsplash.com/photo-1485622204874-8ee4a42c4969"
     },
     {
         "English": "cause",
         "Chinese": "原因,理由",
-        "Unsplash": ""
+        "Unsplash": "https://images.unsplash.com/photo-1705771423441-f2f635e892dc"
     },
     {
         "English": "dawn",
@@ -892,7 +892,7 @@
     {
         "English": "all",
         "Chinese": "全部的",
-        "Unsplash": ""
+        "Unsplash": "https://images.unsplash.com/photo-1435686858161-59da32dfd4b4"
     },
     {
         "English": "ball",
@@ -1022,7 +1022,7 @@
     {
         "English": "for",
         "Chinese": "為了",
-        "Unsplash": ""
+        "Unsplash": "https://images.unsplash.com/photo-1568994105263-6d00c9ad399c"
     },
     {
         "English": "fork",
@@ -1122,7 +1122,7 @@
     {
         "English": "yet",
         "Chinese": "然而,但是",
-        "Unsplash": ""
+        "Unsplash": "https://images.unsplash.com/photo-1520702536908-ebc4a4e92893"
     },
     {
         "English": "yard",
@@ -1152,7 +1152,7 @@
     {
         "English": "very",
         "Chinese": "非常地",
-        "Unsplash": ""
+        "Unsplash": "https://images.unsplash.com/photo-1415926975120-020cd7670707"
     },
     {
         "English": "many",
@@ -1167,7 +1167,7 @@
     {
         "English": "by",
         "Chinese": "旁邊",
-        "Unsplash": ""
+        "Unsplash": "https://images.unsplash.com/photo-1474667689933-0ff72b3d16e9"
     },
     {
         "English": "my",
@@ -1548,25 +1548,90 @@
         "English": "sat",
         "Chinese": "坐",
         "Unsplash": "https://images.unsplash.com/photo-1500214678997-a6adba416e7e"
-    },
-    {
+      },
+      {
+        "English": "sit",
+        "Chinese": "坐",
+        "Unsplash": "https://images.unsplash.com/photo-1500214678997-a6adba416e7e"
+      },
+      {
         "English": "pin",
         "Chinese": "別針",
         "Unsplash": "https://images.unsplash.com/photo-1501978811118-e2abb948bb81"
-    },
-    {
+      },
+      {
         "English": "tap",
         "Chinese": "龍頭",
         "Unsplash": "https://images.unsplash.com/photo-1595514535316-b8c85bf9bbf9"
-    },
-    {
+      },
+      {
         "English": "pan",
         "Chinese": "平底鍋",
         "Unsplash": "https://images.unsplash.com/photo-1627662168806-efa33a7cda86"
-    },
-    {
+      },
+      {
         "English": "nap",
         "Chinese": "打盹",
         "Unsplash": "https://images.unsplash.com/photo-1477349585464-d181ff510abb"
-    }
+      },
+      {
+        "English": "sip",
+        "Chinese": "啜飲",
+        "Unsplash": "https://images.unsplash.com/photo-1511782846297-947487389478"
+      },
+      {
+        "English": "sap",
+        "Chinese": "樹液",
+        "Unsplash": "https://images.unsplash.com/photo-1509830933807-42bfdded2e80"
+      },
+      {
+        "English": "sis",
+        "Chinese": "姊姊",
+        "Unsplash": "https://images.unsplash.com/photo-1523151401668-fff9e38a48e4"
+      },
+      {
+        "English": "sin",
+        "Chinese": "罪",
+        "Unsplash": "https://images.unsplash.com/photo-1627305412843-61b0824e6f59"
+      },
+      {
+        "English": "tin",
+        "Chinese": "錫",
+        "Unsplash": "https://images.unsplash.com/photo-1696739696228-eee49592ff07"
+      },
+      {
+        "English": "tan",
+        "Chinese": "曬黑",
+        "Unsplash": "https://images.unsplash.com/photo-1503886448052-9188d4ac203c"
+      },
+      {
+        "English": "tip",
+        "Chinese": "尖",
+        "Unsplash": "https://images.unsplash.com/photo-1654721082765-58b8648bbc78"
+      },
+      {
+        "English": "pit",
+        "Chinese": "坑",
+        "Unsplash": "https://images.unsplash.com/photo-1641035854140-d2c0298ceb08"
+      },
+      {
+        "English": "pat",
+        "Chinese": "拍拍",
+        "Unsplash": "https://images.unsplash.com/photo-1541532108062-73f2181a08c8"
+      },
+      {
+        "English": "nip",
+        "Chinese": "掐",
+        "Unsplash": "https://images.unsplash.com/photo-1519757435439-7f5d60a892f0"
+      },
+      {
+        "English": "pic",
+        "Chinese": "圖片",
+        "Unsplash": "https://images.unsplash.com/photo-1500051638674-ff996a0ec29e"
+      },
+      {
+        "English": "pad",
+        "Chinese": "軟墊",
+        "Unsplash": "https://images.unsplash.com/photo-1604933834215-2a64950311bd"
+      }
 ]

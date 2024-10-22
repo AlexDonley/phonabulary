@@ -112,6 +112,7 @@ const difficultWords = ["strengths", "pigheaded", "diode", "recycle", "one"]
 // Lyn's lessons remove later
 
 const w8 = ["sat", "pin", "tap", "pan", "nap"]
+const w9 = ["sat", "sit", "pin", "tap", "pan", "nap", "sip", "sap", "sis", "sin", "tin", "tan", "tip", "pit", "pat", "nip", "pig", "pic", "pad"]
 
 
 const graphemes = {
@@ -126,7 +127,7 @@ const graphemes = {
     'bl': bl, 'pl': pl, 'cl': cl, 'gl': gl, 'fl': fl, 'sl': sl,
     'br': br, 'pr': pr, 'cr': cr, 'gr': gr, 'fr': fr, 'tr': tr,
     'sc/sk': sc_sk, 'sm': sm, 'sn': sn, 'sw': sw, 'sp': sp, 'st': st,
-    'tion': tion, 'sion': sion, 'w8' : w8
+    'tion': tion, 'sion': sion, 'w8' : w8, 'w9' : w9
 }
 
 const myDocument = document.documentElement;
