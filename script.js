@@ -109,6 +109,8 @@ const tion = ["nation", "station", "lotion"]
 const sion = ["abrasion", "pension", "lesion"]
 const difficultWords = ["strengths", "pigheaded", "diode", "recycle", "one"]
 
+const ie = ["pie", "tie", "lie", "die", "fried", "tried", "cried", "flies", "dried", "diet"]
+
 // Lyn's lessons remove later
 
 const w8 = ["sat", "pin", "tap", "pan", "nap"]
@@ -127,7 +129,7 @@ const graphemes = {
     'bl': bl, 'pl': pl, 'cl': cl, 'gl': gl, 'fl': fl, 'sl': sl,
     'br': br, 'pr': pr, 'cr': cr, 'gr': gr, 'fr': fr, 'tr': tr,
     'sc/sk': sc_sk, 'sm': sm, 'sn': sn, 'sw': sw, 'sp': sp, 'st': st,
-    'tion': tion, 'sion': sion, 'w8' : w8, 'w9' : w9
+    'tion': tion, 'sion': sion, '-ie': ie, 'w8' : w8, 'w9' : w9
 }
 
 const myDocument = document.documentElement;
@@ -289,9 +291,9 @@ const buttonPressed = e => {
     }
 
     if (selectedPhonics.length > 0) {
-        goButton.classList.remove('disappear');
+        goButton.removeAttribute("disabled")
     } else {
-        goButton.classList.add('disappear');
+        goButton.setAttribute("disabled", true)
     }
 }
 

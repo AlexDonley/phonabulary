@@ -136,12 +136,11 @@ button.taskBtn {
     height: 180px;
     width: 180px;
     clip-path: circle(50% at 50% 50%);
-    transition: rotate 0.5s ease-in-out;
-    transition: clip-path 0.5s ease-in-out;
+    transition: rotate 0.3s ease-in-out,
+                clip-path 0.3s ease-in-out;
 }
 
 .go:hover {
-    background-color: lightgreen;
     rotate: 360deg;
 }
 
@@ -248,11 +247,6 @@ span {
 .clear{
     opacity: 0;
     filter: blur(5px);
-}
-
-.disappear{
-    clip-path: circle(0px at 50% 50%);
-    /*filter: brightness(0);*/
 }
 
 .hide {
