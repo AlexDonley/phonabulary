@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="style.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="script.js" defer></script>
+    <script type="module" src="script.js" defer></script>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <title>Phonabulary - Practice English Phonics</title>
 </head>
@@ -48,7 +48,7 @@
                     </label>
                 </div>
                 
-                <button class="go" onclick="go()" id="goButton" disabled=true>GO</button>
+                <button class="go" id="goButton" disabled=true>GO</button>
             </div>
         </div>
 
@@ -63,15 +63,15 @@
 
     <h1 class="letters" id="letterizer"></h1>
 
-    <div class="chinese-wrap clear" id="chineseWrap">
-        <div class="chinese" id="chinese">預設</div>
+    <div class="translate-wrap clear" id="translateWrap">
+        <div class="translations" id="translateText">預設</div>
     </div>
 
     <div class="actions hide" id="actions">
         <div class="btnNest">
-            <button type=btn class="taskBtn" onClick="previous()"><ion-icon name="arrow-back-outline"></ion-icon></button>
-            <button type=btn class="taskBtn" onClick="goHome()"><ion-icon name="home"></ion-icon></button>
-            <button type=btn class="taskBtn" onClick="next()"><ion-icon name="arrow-forward-outline"></ion-icon></button>
+            <button type=btn class="taskBtn" id="prevBtn"><ion-icon name="arrow-back-outline"></ion-icon></button>
+            <button type=btn class="taskBtn" id="homeBtn"><ion-icon name="home"></ion-icon></button>
+            <button type=btn class="taskBtn" id="nextBtn"><ion-icon name="arrow-forward-outline"></ion-icon></button>
         </div>
     </div>
 

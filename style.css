@@ -17,7 +17,7 @@
 }
 
 body {
-    color: white;
+
     background-color: rgb(56, 56, 56);
     margin: 0;
     padding: 0;
@@ -169,11 +169,14 @@ button.taskBtn {
 
 span {
     transition: all 0.4s ease;
-    opacity: .5;
-    color: white;
     display: inline-block;
     user-select: none;
     /*filter: blur(5px);*/
+}
+
+.unselected {
+    color: white;
+    opacity: .5;
 }
 
 .bigger {
@@ -192,7 +195,7 @@ span {
     mix-blend-mode: difference;
 }
 
-.chinese-wrap{
+.translate-wrap{
     left: 85%;
     top: 50%;
     height: 80vh;
@@ -207,19 +210,27 @@ span {
     transition: all 0.4s ease;
 }
 
-.chinese {
+.translations {
     color: black;
     writing-mode: vertical-rl;
     font-size: 15vh;
-    font-family: ZH_zhuyin;
     white-space: nowrap;
 }
 
-@-moz-document url-prefix() {
+ruby {
+    ruby-align: center;
+}
+
+rt {
+    font-size: 4vh;
+    font-weight: bold;
+}
+
+/* @-moz-document url-prefix() {
     .chinese {
-        letter-spacing: -8vh;
+        letter-spacing: 0vh;
     }
-  }
+} */
 
 .actions {
     justify-content: center;

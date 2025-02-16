@@ -1,0 +1,174 @@
+[
+    {
+        "a" : [
+            "apple", "applaud", "apple", "atlas", "ant", 
+            "apple pie", "adobo", "amusement park", "advance", "algorithm"
+        ],
+        "b" : [
+            "book", "bow", "bag", "book", "bear", 
+            "burger", "biryani", "beach", "bend", "binary"
+        ],
+        "c" : [
+            "cat", "climb", "cat", "chair", "cat", 
+            "chicken parmesan", "chow mein", "cinema", "climb", "compile"
+        ],
+        "d" : [
+            "dog", "dance", "dog", "desk", "dog", 
+            "donut", "dim sum", "donut shop", "dance", "data"
+        ],
+        "e" : [
+            "egg", "eat", "elephant", "eraser", "elephant",
+            "eggs benedict", "egg roll", "Eiffel tower", "engage", "encrypt"
+        ], 
+        "f" : [
+            "fish", "fist-bump", "fish", "folder", "fox",
+            "French fries", "falafel", "forest", "flex"
+        ], 
+        "g" : [
+            "girl", "group", "goat", "globe", "giraffe",
+            "grilled cheese", "gyoza", "grocery store", "glide", "graph"
+        ], 
+        "h" : [
+            "hat", "high-five", "hippo", "highlighter", "horse",
+            "hot dog", "hummus", "hospital", "hop", "HTML"
+        ],
+        "i" : [
+            "ink", "itch", "igloo", "iPad", "iguana",
+            "ice cream", "Indian curry", "ice skating rink", "increase", "internet"
+        ],
+        "j" : [
+            "jump", "jump", "jump", "journal", "jaguar", 
+            "jambalaya", "jiaozi", "jungle", "jump", "java"
+        ],
+        "k" : [
+            "king", "kick", "koala", "keyboard", "kangaroo",
+            "key lime pie", "kimchi", "kitchen", "kick", "kernel"
+        ],
+        "l" : [
+            "lion", "lunge", "legs", "laptop", "lion",
+            "lasagna", "laksa", "library", "lunge", "logic"
+        ],
+        "m" : [
+            "monkey", "march", "monkey", "marker", "monkey",
+            "macaroni", "miso", "mall", "move", "machine"
+        ],
+        "n" : [
+            "nose", "nudge", "nose", "notebook", "narwhal",
+            "nachos", "nasi goreng", "national park", "navigate", "network"
+        ],
+        "o" : [
+            "ox", "open", "ox", "overhead", "owl",
+            "onion", "okonomiyaki", "opera house", "overcome", "object-oriented"
+        ],
+        "p" : [
+            "pen", "point", "papaya", "pencil", "penguin",
+            "pizza", "pad Thai", "playground", "push up", "programming"
+        ],
+        "q" : [
+            "queen", "quake", "queen", "question", "quail",
+            "quiche", "quinoa", "quaint village", "quickstep", "query"
+        ],
+        "r" : [
+            "read", "run", "rabbit", "ruler", "rabbit",
+            "roast beef", "roti", "restaurant", "run", "robotics"
+        ],
+        "s" : [
+            "sun", "squat", "sun", "scissors", "snake",
+            "spaghetti", "sushi", "stadium", "sprint", "software"
+        ],
+        "t" : [
+            "tea", "twist", "tiger", "textbook", "tiger", 
+            "tacos", "tandoori chicken", "theme park", "turn", "turing machine"
+        ],
+        "u" : [
+            "up", "unzip", "up", "USB", "umbrella", 
+            "upside-down cake", "udon", "university", "unwind", "user interface"
+        ],
+        "v" : [
+            "vest", "vote", "vest", "video", "vulture",
+            "vanilla pudding", "vindaloo", "volcano", "vault", "virtual reality"
+        ],
+        "w" : [
+            "water", "walk", "watch", "whiteboard", "wolf",
+            "waffles", "wontons", "waterfall", "watch", "web"
+        ],
+        "x" : [
+            "box", "x-jump", "six", "xerox", "x-ray fish",
+            "xigua", "xiaolongbao", "xanadu", "xcelerate", "xor"
+        ],
+        "y" : [
+            "yo-yo", "yawn", "yo-yo", "yearbook", "yak",
+            "yogurt", "yakitori", "yoga class", "yield", "YAML"
+        ],
+        "z" : [
+            "zoo", "zip", "zebra", "zipper pouch", "zebra",
+            "zucchini bread", "zongzi", "zoo", "zoom", "zip"
+        ]
+    },
+    {
+        "a" : ["bad", "mad", "sad", "fan", "man", "ham", "bat", "cat", "fat", "hat"],
+        "e" : ["leg", "hen", "pen", "ten", "net", "pet", "set", "wet"],
+        "i" : ["kid", "lid", "dig", "pig", "fin", "win", "kit", "hit"],
+        "o" : ["job", "mom", "hop", "mop", "top", "dot", "not", "pot", "box", "fox"],
+        "u" : ["cub",  "tub", "bug", "bun", "fun", "sun", "cup", "cut"],
+        "a_e" : ["bake", "cake", "game", "name", "base", "case", "hate", "late", "save", "wave"],
+        "e_e" : ["eve", "Steve", "here", "Pete", "these"],
+        "i_e" : ["hide", "ride", "life", "wife", "bike", "like", "fine", "wine", "bite", "kite"],
+        "o_e" : ["Coke", "home", "hope", "rope", "nose", "rose", "note", "vote"],
+        "u_e" : ["cube", "tube", "June", "use", "cute"],
+        "igh" : ["high", "light", "night", "right", "sight"],
+        "ph" : ["phone", "photo"],
+        "ch" : ["each", "teach", "much", "inch", "rich"],
+        "sh" : ["she", "ship", "shop", "dish", "fish"],
+        "th1" : ["thin", "bath", "math", "with", "mouth"],
+        "th2" : ["the", "than", "that", "this", "them"],
+        "wh" : ["who", "why", "when", "which", "white"],
+        "ng" : ["king", "ring", "sing", "long", "song"],
+        "ck" : ["back", "pack", "pick", "sick", "duck"],
+        "oa" : ["boat", "coat", "goat", "road", "soap"],
+        "oo1" : ["good", "book", "cook", "look", "poor ", "foot"],
+        "oo2" : ["too", "zoo", "cool", "room", "moon"],
+        "ou" : ["our", "out", "loud", "cloud", "round"],
+        "ow1" : ["bow", "cow", "how", "now", "down"],
+        "ow2" : ["own", "low", "row", "grow", "slow"],
+        "oi/oy" : ["oil", "boil", "join", "point", "noise", "boy", "joy", "toy"],
+        "ai/ay" : ["fail", "mail", "nail", "tail", "rain", "day", "may", "pay", "say", "way"],
+        "au/aw" : ["Paul", "cause", "dawn", "draw"],
+        "all" : ["all", "ball", "call", "fall", "tall"],
+        "ea1" : ["sea", "lead", "read", "ear", "hear"],
+        "ea2" : ["dead", "head", "bear", "pear", "wear"],
+        "ee" : ["bee", "see", "need", "seed", "week"],
+        "ar" : ["arm", "art", "car", "card", "far"],
+        "or" : ["or", "for", "fork", "pork", "born"],
+        "er" : ["her", "over", "river", "ruler", "order"],
+        "ir" : ["sir", "bird", "girl", "first", "shirt"],
+        "ur" : ["fur", "burn", "turn", "surf", "hurt"],
+        "y-" : ["yes", "yet", "yard", "year", "yo-yo"],
+        "-y" : ["baby", "body", "very", "many", "tidy", "by", "my", "shy", "dry", "try"],
+        "soft c" : ["ice", "nice", "face", "city", "circle", "pencil", "cycle", "recycle"],
+        "soft g" : ["age", "cage", "page", "giant", "magic", "gym"],
+        "bl" : ["blow", "black", "block"],
+        "pl" : ["plan", "play", "place"],
+        "cl" : ["clap", "class", "clean"],
+        "gl" : ["glad", "glue", "glass"],
+        "fl" : ["fly", "flag", "flower"],
+        "sl" : ["slim", "slow", "sleep"],
+        "br" : ["bread", "bring", "brush"],
+        "pr" : ["pray", "price", "print"],
+        "cr" : ["cry", "crab", "crazy"],
+        "gr" : ["gram", "grade", "grape"],
+        "dr" : ["dry", "drop", "drum"],
+        "fr" : ["fry", "free", "frog"],
+        "tr" : ["try", "tree", "trip"],
+        "sc/sk" : ["scan", "score", "school", "sky", "ski", "skate"],
+        "sm" : ["small", "smart", "smile"],
+        "sn" : ["snow", "snack", "snake"],
+        "sw" : ["swim", "swing", "sweet"],
+        "sp" : ["spy", "speak", "spell"],
+        "st" : ["stay", "star", "start"],
+        "tion" : ["nation", "station", "lotion"],
+        "sion" : ["abrasion", "pension", "lesion"],
+        "-ie" : ["pie", "tie", "lie", "die", "fried", "tried", "cried", "flies", "dried", "diet"],
+        "hard words" : ["strengths", "pigheaded", "diode", "recycle", "one"]
+    }
+]
