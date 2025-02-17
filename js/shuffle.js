@@ -1,4 +1,4 @@
-// import { shuffleOne } from './js/shuffle.js'
+// import { shuffleOne, shuffleInts } from './js/shuffle.js'
 
 // SHUFFLER SNIP
 // takes an unshuffled array and returns a shuffled array
@@ -16,4 +16,16 @@ export function shuffleOne(arr){
     })
     
     return shuffled;
+}
+
+export function shuffleInts(int) {
+    let intArr = []
+
+    for (let i = 0; i < int; i++) {
+        intArr.push(i)
+    }
+
+    intArr = shuffleOne(intArr)
+
+    return intArr
 }
