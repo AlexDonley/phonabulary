@@ -101,11 +101,14 @@ label {
     overflow-y: auto;
 }
 
-button {
-    padding: 10px;
+.one-option {
     border-radius: 5px;
     border: 0px;
-    margin: 5px;
+}
+
+button {
+    padding: 10px;
+    margin: 3px;
     font-size: 3rem;
 }
 
@@ -226,12 +229,6 @@ rt {
     font-weight: bold;
 }
 
-/* @-moz-document url-prefix() {
-    .chinese {
-        letter-spacing: 0vh;
-    }
-} */
-
 .actions {
     justify-content: center;
     display: flex;
@@ -255,6 +252,10 @@ rt {
     transition: all 0.5s ease-in-out;
 }
 
+.quiz-img {
+    object-fit: cover
+}
+
 .clear{
     opacity: 0;
     filter: blur(5px);
@@ -267,4 +268,49 @@ rt {
 
 .hide {
     display: none;
+}
+
+.quiz-layer {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    justify-content: center;
+    z-index: 1;
+    display: none
+}
+
+.quiz-display {
+    height: 75vh;
+    margin: auto;
+    color: white;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    font-size: min(50vw, 50vh)
+}
+
+.quiz-menu {
+    height: 100%;
+    width: 25%;
+    display: flex;
+    flex-direction: column
+}
+
+.quiz-btn {
+    flex: 1;
+    font-size: 15vh;
+}
+
+.speak-btn {
+    border-radius: 50%;
+    height: 50vh;
+    width: 50vh;
+}
+
+.speak-btn > img {
+    width: 80%;
+    opacity: 80%;
 }
