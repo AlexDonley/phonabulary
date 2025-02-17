@@ -1,0 +1,236 @@
+[
+  {
+    "upper": "A",
+    "lower": "a",
+    "noun": "apple",
+    "verb": "applaud",
+    "Unsplash": "1570913149827-d2ac84ab3f9a",
+    "SVGRepo": "485333/apple.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "B",
+    "lower": "b",
+    "noun": "book",
+    "verb": "bow",
+    "Unsplash": "1532012197267-da84d127e765",
+    "SVGRepo": "513273/book-opened.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "C",
+    "lower": "c",
+    "noun": "cat",
+    "verb": "climb",
+    "Unsplash": "1533738363-b7f9aef128ce",
+    "SVGRepo": "500106/cat.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "D",
+    "lower": "d",
+    "noun": "dog",
+    "verb": "dance",
+    "Unsplash": "1561037404-61cd46aa615b",
+    "SVGRepo": "405227/dog.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "E",
+    "lower": "e",
+    "noun": "egg",
+    "verb": "eat",
+    "Unsplash": "1590005031487-03c7f56ef7d3",
+    "SVGRepo": "405269/egg.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "F",
+    "lower": "f",
+    "noun": "fish",
+    "verb": "fist-bump",
+    "Unsplash": "1578507065211-1c4e99a5fd24",
+    "SVGRepo": "484196/fish.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "G",
+    "lower": "g",
+    "noun": "girl",
+    "verb": "group",
+    "Unsplash": "1503454537195-1dcabb73ffb9",
+    "SVGRepo": "405204/girl-medium-skin-tone.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "H",
+    "lower": "h",
+    "noun": "hat",
+    "verb": "high-five",
+    "Unsplash": "1576858688752-d7d4dbd6686a",
+    "SVGRepo": "484236/hat.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "I",
+    "lower": "i",
+    "noun": "ink",
+    "verb": "itch",
+    "Unsplash": "1583162557635-53d9931332c5",
+    "SVGRepo": "263187/ink.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "J",
+    "lower": "j",
+    "noun": "jump",
+    "verb": "jump",
+    "Unsplash": "1613122707153-070406e9fd27",
+    "SVGRepo": "173869/jumping.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "K",
+    "lower": "k",
+    "noun": "king",
+    "verb": "kick",
+    "Unsplash": "1457052271742-6b6b66887aeb",
+    "SVGRepo": "156408/king.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "L",
+    "lower": "l",
+    "noun": "lion",
+    "verb": "lunge / look",
+    "Unsplash": "1511216113906-8f57bb83e776",
+    "SVGRepo": "396923/lion.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "M",
+    "lower": "m",
+    "noun": "monkey",
+    "verb": "march",
+    "Unsplash": "1540573133985-87b6da6d54a9",
+    "SVGRepo": "397525/monkey.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "N",
+    "lower": "n",
+    "noun": "nose",
+    "verb": "nudge",
+    "Unsplash": "1466921583968-f07aa80c526e",
+    "SVGRepo": "406736/nose-medium-light-skin-tone.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "O",
+    "lower": "o",
+    "noun": "ox",
+    "verb": "open",
+    "Unsplash": "1676322559474-91c24a7e6a1c",
+    "SVGRepo": "397686/ox-bull.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "P",
+    "lower": "p",
+    "noun": "pen",
+    "verb": "point",
+    "Unsplash": "1455390582262-044cdead277a",
+    "SVGRepo": "477061/pen.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "Q",
+    "lower": "q",
+    "noun": "queen",
+    "verb": "quake",
+    "Unsplash": "1545828751-0a3b3a1da949",
+    "SVGRepo": "317456/queen-side.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "R",
+    "lower": "r",
+    "noun": "read",
+    "verb": "run",
+    "Unsplash": "1491309055486-24ae511c15c7",
+    "SVGRepo": "308029/read-books-research-study-read.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "S",
+    "lower": "s",
+    "noun": "sun",
+    "verb": "squat",
+    "Unsplash": "1614642264762-d0a3b8bf3700?",
+    "SVGRepo": "484356/sun.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "T",
+    "lower": "t",
+    "noun": "tea",
+    "verb": "twist",
+    "Unsplash": "1564890369478-c89ca6d9cde9",
+    "SVGRepo": "475139/tea.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "U",
+    "lower": "u",
+    "noun": "up",
+    "verb": "unzip",
+    "Unsplash": "1544808208-727498b3df07",
+    "SVGRepo": "475013/up.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "V",
+    "lower": "v",
+    "noun": "vest",
+    "verb": "vote",
+    "Unsplash": "1593029762624-0c28669f2056",
+    "SVGRepo": "260988/vest.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "W",
+    "lower": "w",
+    "noun": "water",
+    "verb": "walk",
+    "Unsplash": "1527066236128-2ff79f7b9705",
+    "SVGRepo": "491975/water-fee.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "X",
+    "lower": "x",
+    "noun": "box",
+    "verb": "x-jump",
+    "Unsplash": "1623668514914-ab262971bc88",
+    "SVGRepo": "489673/box.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "Y",
+    "lower": "y",
+    "noun": "yo-yo",
+    "verb": "yawn",
+    "Unsplash": "1649988479357-ea7daba0a43d",
+    "SVGRepo": "277516/yoyo.svg",
+    "GIF": ""
+  },
+  {
+    "upper": "Z",
+    "lower": "z",
+    "noun": "zoo",
+    "verb": "zip",
+    "Unsplash": "1534567153574-2b12153a87f0",
+    "SVGRepo": "278675/elephant-cage.svg",
+    "GIF": ""
+  }
+]
