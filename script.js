@@ -11,6 +11,9 @@ import { synthSpeak } from './js/speech-synth.js'
 
 // Lyn's lessons remove later
 
+let errorMap = [];
+const phaseOrder = [null, 'caseScore', 'imgScore', 'listScore'];
+
 const w8 = ["sat", "pin", "tap", "pan", "nap"]
 const w9 = ["sat", "sit", "pin", "tap", "pan", "nap", "sip", "sap", "sis", "sin", "tin", "tan", "tip", "pit", "pat", "nip", "pig", "pic", "pad"]
 
@@ -31,6 +34,9 @@ const options       = document.querySelector('#optionButtons');
 const quizLayer     = document.querySelector('#quizLayer');
 const quizDisplay   = document.querySelector('#quizDisplay');
 const quizMenu      = document.querySelector('#quizMenu');
+const progressLayer = document.querySelector('#progressLayer');
+const progressMap   = document.querySelector('#progressMap');
+const progressDigit = document.querySelector('#progressDigit');
 
 const actions       = document.querySelector('#actions');
 const pic           = document.querySelector('#pic');
@@ -518,15 +524,28 @@ function changePic(word) {
 let quizQueue = [];
 let correctAnswer = null;
 let quizPhase;
+const abcsOrder =[
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+    'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+]
+const correctLevels = ['q-incorrect', 'q-partial', 'q-close', 'q-correct']
+const gradeCaptions = [
+    'matching cases',
+    'matching image to letter',
+    'matching speech to letter',
+    'total'
+]
 
 function startQuiz() {
     console.log(defaultABCs[0]['lower']);
 
     options.classList.add('hide');
     settings.classList.add('hide');
-    quizLayer.style.display = 'flex'
+    quizLayer.classList.remove('hide')
 
-    quizPhase = 3;
+    errorMap = [];
+
+    quizPhase = 1;
 
     // 3 PHASES: 
     // match uppercase / lowercase
@@ -537,6 +556,18 @@ function startQuiz() {
     // prepare a shuffled queue of integers
     // show the prompt letter, image, or sound
     // display 4 button options
+
+    abcsOrder.forEach(letter => {
+        let letterDict = {};
+        letterDict.lower = letter;
+        letterDict.caseScore = 3;
+        letterDict.imgScore = 3;
+        letterDict.listScore = 3;
+
+        errorMap.push(letterDict);
+    })
+
+    console.log(errorMap);
 
     startPhase(quizPhase);
 }
@@ -565,35 +596,40 @@ function startPhase(int) {
 }
 
 function populateQuizBtns(answIdx) {
+    const btnColors = ['a', 'b', 'c', 'd']
+    
     let choiceArr = [answIdx];
     quizMenu.innerHTML = '';
 
-    for (
-        let randChoice = Math.floor(Math.random() * 26); 
-        choiceArr.length < 4; 
-        choiceArr.push(randChoice)
-    ) {
-        randChoice = Math.floor(Math.random() * 26);
+    while (choiceArr.length < 4) {
+        const randChoice = Math.floor(Math.random() * 26);
+
+        if (!choiceArr.includes(randChoice)) {
+            choiceArr.push(randChoice)
+        }
     }
 
     choiceArr = shuffleOne(choiceArr);
     
+    let col = 0;
     choiceArr.forEach(choice => {
         const thisChoice = document.createElement('button');
         thisChoice.innerText = defaultABCs[choice]['lower'];
         thisChoice.classList.add('quiz-btn');
+        thisChoice.classList.add(btnColors[col]);
 
         if (choice == answIdx) {
-            thisChoice.addEventListener('click', isAnswCorrect(true))
+            thisChoice.addEventListener('click', isAnswCorrect(true));
         } else {
-            thisChoice.addEventListener('click', isAnswCorrect(false))
+            thisChoice.addEventListener('click', isAnswCorrect(false, answIdx));
         }
 
-        quizMenu.append(thisChoice)
+        quizMenu.append(thisChoice);
+        col++;
     })
 }
 
-function isAnswCorrect(bool) {
+function isAnswCorrect(bool, idx, map) {
 
     return function executeOnEvent (e) {
         
@@ -602,15 +638,18 @@ function isAnswCorrect(bool) {
             if (quizQueue.length > 0) {
                 nextQuizQuestion()
             } else if (quizPhase < 3) {
-                quizPhase += 1
-                startPhase(quizPhase)
+                startPhase(quizPhase + 1)
             } else {
                 showQuizScore()
             }
 
         } else {
-            console.log(e)
+            // console.log(e)
+            errorMap[idx][phaseOrder[quizPhase]] -= 1
+            console.log(errorMap)
+
             e.target.disabled = true
+            e.target.classList.add('grayed-out')
         }
     }
 }
@@ -652,9 +691,11 @@ function prepQuizImage(idx) {
 
     const newImg = document.createElement('img');
     newImg.classList.add('quiz-img')
+
     // const imgURL = "https://images.unsplash.com/photo-" + 
     //     defaultABCs[correctAnswer]['Unsplash'] + 
     //     "?h=600&auto=format&fit=crop&q=5";
+
     const imgURL = "https://www.svgrepo.com/show/" +
         defaultABCs[idx]['SVGRepo']
     console.log(imgURL)
@@ -679,5 +720,84 @@ function prepQuizAudio(str) {
 }
 
 function showQuizScore() {
+    console.log('show quiz score');
+    quizLayer.classList.add('hide');
 
+    progressLayer.classList.remove('hide');
+    const progResults = generateGradeVisual(errorMap)
+
+    progressMap.append(progResults[0]);
+
+    let i = 0;
+    progResults[1].forEach(num => {
+        const digitRuby = document.createElement('ruby');
+        digitRuby.innerText = num + "%";
+
+        const gradeCap = document.createElement('rt');
+        gradeCap.innerText = gradeCaptions[i]
+        digitRuby.append(gradeCap)
+
+        progressDigit.append(digitRuby);
+        i++
+    })
+}
+
+function generateGradeVisual(map) {
+
+    let caseRaw = 0;
+    let imgRaw = 0;
+    let listRaw = 0;
+
+    const gradeWrap = document.createElement('div');
+    gradeWrap.classList.add('fixed-grid')
+    gradeWrap.style.display = 'grid';
+    
+    const columnStr = "1fr ".repeat(map.length + 1);
+    gradeWrap.style.gridTemplateColumns = columnStr;
+
+    for (let n = 0; n < 4; n++) {
+        const textDiv = document.createElement('div');
+        textDiv.innerText = phaseOrder[n];
+        textDiv.style.color = 'white'
+
+        gradeWrap.append(textDiv);
+        
+        map.forEach(obj => {
+            const newDiv = document.createElement('div');
+            
+            let thisValue
+
+            if (n == 0) {            
+                thisValue = obj['lower'];
+                newDiv.style.color = 'white'
+            } else if (n == 1) {
+                thisValue = obj['caseScore'];
+                caseRaw += thisValue;
+            } else if (n == 2) {
+                thisValue = obj['imgScore'];
+                imgRaw += thisValue;
+            } else if (n == 3) {
+                thisValue = obj['listScore'];
+                listRaw += thisValue;
+            }
+
+            newDiv.innerText = thisValue;
+            newDiv.classList.add('one-cell');
+
+            if (!isNaN(thisValue)) {
+                newDiv.classList.add(correctLevels[thisValue]);
+            }
+
+            gradeWrap.append(newDiv);
+        })
+    }
+
+    const casePercent = Math.round(100 * caseRaw / (3 * map.length));
+    const imgPercent = Math.round(100 * imgRaw / (3 * map.length));
+    const listPercent = Math.round(100 * listRaw / (3 * map.length));
+    const totalPercent = Math.round((casePercent + imgPercent + listPercent) / 3);
+
+    console.log(casePercent, imgPercent, listPercent, totalPercent)
+
+    return [gradeWrap, [casePercent, imgPercent, listPercent, totalPercent]];
 }

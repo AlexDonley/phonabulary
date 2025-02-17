@@ -252,10 +252,6 @@ rt {
     transition: all 0.5s ease-in-out;
 }
 
-.quiz-img {
-    object-fit: cover
-}
-
 .clear{
     opacity: 0;
     filter: blur(5px);
@@ -264,10 +260,6 @@ rt {
 .disappear{
     clip-path: circle(0px at 50% 50%);
     /*filter: brightness(0);*/
-}
-
-.hide {
-    display: none;
 }
 
 .quiz-layer {
@@ -279,7 +271,7 @@ rt {
     grid-template-columns: 3fr 1fr;
     justify-content: center;
     z-index: 1;
-    display: none
+    display: flex;
 }
 
 .quiz-display {
@@ -302,6 +294,16 @@ rt {
 .quiz-btn {
     flex: 1;
     font-size: 15vh;
+    font-weight: bold;
+    color: white;
+    border-radius: 10px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.quiz-img {
+    object-fit: contain;
+    width: 50vh;
+    height: 50vh;
 }
 
 .speak-btn {
@@ -313,4 +315,93 @@ rt {
 .speak-btn > img {
     width: 80%;
     opacity: 80%;
+}
+
+.a {
+    background-color: maroon;
+}
+
+.b {
+    background-color: darkorange;
+}
+
+.c {
+    background-color: darkgreen;
+}
+
+.d {
+    background-color: navy;
+}
+
+.grayed-out {
+    background-color: gray;
+    color: rgb(148, 148, 148);
+}
+
+.fixed-grid {
+    width: 700px;
+    top: 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    gap: 1px;
+    border-radius: 5px;
+    background-color: rgb(40, 40, 40);
+    padding: 10px;
+    margin: 5px;
+}
+
+.one-cell {
+    border-radius: 5px;
+    height: 100%;
+}
+
+.q-correct {
+    background-color: limegreen;
+}
+
+.q-close {
+    background-color: yellow;
+}
+
+.q-partial {
+    background: orange;
+}
+
+.q-incorrect {
+    background: red;
+}
+
+.progress-layer {
+    width: 100vw;
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.four-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    font-size: 10vw;
+    color: white;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+ruby {
+    ruby-position: under;
+}
+
+rt {
+    font-size: 2.5vw;
+}
+
+.hide {
+    display: none;
 }
