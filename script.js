@@ -6,7 +6,8 @@ import {
 import {
     wordToPhonArr, wordToLetterArr, joinIntoClusters
 } from './js/phon-process.js'
-import { shuffleOne } from './js/shuffle.js'
+import { shuffleOne, shuffleInts } from './js/shuffle.js'
+import { synthSpeak } from './js/speech-synth.js'
 
 // Lyn's lessons remove later
 
@@ -21,22 +22,27 @@ const rainbower     = document.querySelector('#rainbower');
 const imager        = document.querySelector('#imager');
 const menu          = document.querySelector('#menu');
 const settings      = document.querySelector('#settings');
-const goButton      = document.querySelector('#goButton');
+const goBtn         = document.querySelector('#goBtn');
+const quizBtn       = document.querySelector('#quizBtn')
 const prevBtn       = document.querySelector('#prevBtn');
 const homeBtn       = document.querySelector('#homeBtn');
 const nextBtn       = document.querySelector('#nextBtn');
 const options       = document.querySelector('#optionButtons');
+const quizLayer     = document.querySelector('#quizLayer');
+const quizDisplay   = document.querySelector('#quizDisplay');
+const quizMenu      = document.querySelector('#quizMenu');
 
-const actions = document.getElementById('actions');
-const pic = document.getElementById('pic');
-const letterizer = document.getElementById('letterizer');
-const translateWrap = document.getElementById('translateWrap');
-const translateText = document.getElementById('translateText');
+const actions       = document.querySelector('#actions');
+const pic           = document.querySelector('#pic');
+const letterizer    = document.querySelector('#letterizer');
+const translateWrap = document.querySelector('#translateWrap');
+const translateText = document.querySelector('#translateText');
 
-goButton.addEventListener('click', go);
+goBtn.addEventListener('click', go);
 prevBtn.addEventListener('click', previous);
 homeBtn.addEventListener('click', goHome);
-nextBtn.addEventListener('click', next)
+nextBtn.addEventListener('click', next);
+quizBtn.addEventListener('click', startQuiz);
 
 
 //let backdrop = document.getElementById('bg');
@@ -57,6 +63,7 @@ let wordQueue = []
 
 let EN_ZH_img
 let defaultWordLists
+let defaultABCs
 
 function loadtranslateTexts(){
     fetch('./data/EN_ZH_img.json')
@@ -91,46 +98,67 @@ function loadWordLists(){
     .catch(error => console.log(error));
 }
 
+function loadABCs(){
+    fetch('./data/abcs.json')
+    .then(res => {
+        if (res.ok) {
+            console.log('SUCCESS');
+        } else {
+            console.log('FAILURE');
+        }
+        return res.json();
+    })
+    .then(data => {
+        defaultABCs = data;
+    })
+    .catch(error => console.log(error));
+}
+
 loadtranslateTexts()
 loadWordLists()
+loadABCs()
 
 function populatePhonicBtns(){
 
+    options.innerHTML = ''
     selectedPhonics = []
     wordQueue = [];
 
-    console.log(Object.keys(defaultWordLists[1]))
+    // console.log(Object.keys(defaultWordLists[1]))
 
+    let n = 0
     for (const key of Object.keys(defaultWordLists[1])) {
         
         let newButton = document.createElement("button");
-        newButton.classList.add('phonic');
-        newButton.id = key;
+        newButton.classList.add('one-option');
+        newButton.id = "phon" + n;
         newButton.innerHTML = key;
         newButton.addEventListener('click', managePhonicList(key))
         options.appendChild(newButton);
+        n++
 
     }
 }
 
 function managePhonicList(str) {
     return function executeOnEvent (e) {
-        const phonInd = selectedPhonics.indexOf(str)
+        const queueInd = selectedPhonics.indexOf(str)
+        const phonInd = Object.keys(defaultWordLists[1]).indexOf(str)
 
-        if (phonInd > -1) {
-            selectedPhonics.splice(phonInd, 1);
-            document.querySelector('#' + str).classList.remove('selected-phonics');
+        if (queueInd > -1) {
+            selectedPhonics.splice(queueInd, 1);
+            document.querySelector('#phon' + phonInd).classList.remove('selected-phonics');
         } else {
             selectedPhonics.push(str);
-            document.querySelector('#' + str).classList.add('selected-phonics');
+            document.querySelector('#phon' + phonInd).classList.add('selected-phonics');
         }   
 
         console.log(selectedPhonics)
 
         if (selectedPhonics.length > 0) {
-            goButton.removeAttribute("disabled")
+            goBtn.removeAttribute("disabled")
         } else {
-            goButton.setAttribute("disabled", true)
+            goBtn.setAttribute("disabled", true)
         }
     }
 }
@@ -482,4 +510,174 @@ function changePic(word) {
     }
 
     pic.src = key;
+}
+
+
+// QUIZ FUNCTIONS
+
+let quizQueue = [];
+let correctAnswer = null;
+let quizPhase;
+
+function startQuiz() {
+    console.log(defaultABCs[0]['lower']);
+
+    options.classList.add('hide');
+    settings.classList.add('hide');
+    quizLayer.style.display = 'flex'
+
+    quizPhase = 3;
+
+    // 3 PHASES: 
+    // match uppercase / lowercase
+    // picture to letter
+    // sound to letter
+
+    // each phase I need to
+    // prepare a shuffled queue of integers
+    // show the prompt letter, image, or sound
+    // display 4 button options
+
+    startPhase(quizPhase);
+}
+
+function startPhase(int) {
+
+    quizPhase = int
+    quizQueue = shuffleInts(26);
+    correctAnswer = quizQueue[0];
+
+    if (quizPhase == 1) {
+
+        prepQuizText(defaultABCs[correctAnswer]['upper']);
+        
+    } else if (quizPhase == 2) {
+
+        prepQuizImage(correctAnswer)
+
+    } else if (quizPhase == 3) {
+
+        prepQuizAudio(defaultABCs[correctAnswer]['noun'])
+
+    }
+
+    populateQuizBtns(correctAnswer);
+}
+
+function populateQuizBtns(answIdx) {
+    let choiceArr = [answIdx];
+    quizMenu.innerHTML = '';
+
+    for (
+        let randChoice = Math.floor(Math.random() * 26); 
+        choiceArr.length < 4; 
+        choiceArr.push(randChoice)
+    ) {
+        randChoice = Math.floor(Math.random() * 26);
+    }
+
+    choiceArr = shuffleOne(choiceArr);
+    
+    choiceArr.forEach(choice => {
+        const thisChoice = document.createElement('button');
+        thisChoice.innerText = defaultABCs[choice]['lower'];
+        thisChoice.classList.add('quiz-btn');
+
+        if (choice == answIdx) {
+            thisChoice.addEventListener('click', isAnswCorrect(true))
+        } else {
+            thisChoice.addEventListener('click', isAnswCorrect(false))
+        }
+
+        quizMenu.append(thisChoice)
+    })
+}
+
+function isAnswCorrect(bool) {
+
+    return function executeOnEvent (e) {
+        
+        if (bool) {
+
+            if (quizQueue.length > 0) {
+                nextQuizQuestion()
+            } else if (quizPhase < 3) {
+                quizPhase += 1
+                startPhase(quizPhase)
+            } else {
+                showQuizScore()
+            }
+
+        } else {
+            console.log(e)
+            e.target.disabled = true
+        }
+    }
+}
+
+function nextQuizQuestion() {
+    
+    quizQueue.shift();
+    correctAnswer = quizQueue[0];
+    
+    if (quizPhase == 1) {
+
+        prepQuizText(defaultABCs[correctAnswer]['upper']);
+        
+    } else if (quizPhase == 2) {
+
+        prepQuizImage(correctAnswer)
+
+    } else if (quizPhase == 3) {
+
+        prepQuizAudio(defaultABCs[correctAnswer]['noun'])
+
+    }
+
+    populateQuizBtns(correctAnswer);
+}
+
+function assignSpeech(idx) {
+
+    return function executeOnEvent (e) {
+        synthSpeak(defaultABCs[idx]['noun'], 0.5, 1.0, 'en')
+    }
+}
+
+function prepQuizText(str) {
+    quizDisplay.innerText = str;
+}
+
+function prepQuizImage(idx) {
+
+    const newImg = document.createElement('img');
+    newImg.classList.add('quiz-img')
+    // const imgURL = "https://images.unsplash.com/photo-" + 
+    //     defaultABCs[correctAnswer]['Unsplash'] + 
+    //     "?h=600&auto=format&fit=crop&q=5";
+    const imgURL = "https://www.svgrepo.com/show/" +
+        defaultABCs[idx]['SVGRepo']
+    console.log(imgURL)
+    newImg.src = imgURL
+    quizDisplay.innerHTML = ''
+    quizDisplay.append(newImg)
+}
+
+function prepQuizAudio(str) {
+
+    synthSpeak(str, 0.5, 1.0, 'en')
+
+    const speakBtn = document.createElement('button');
+    const speakerSVG = document.createElement('img');
+    speakerSVG.src = "https://www.svgrepo.com/show/505507/speaker-2.svg";
+    speakBtn.append(speakerSVG);
+    speakBtn.classList.add('speak-btn')
+    speakBtn.addEventListener('click', assignSpeech(correctAnswer));
+
+    quizDisplay.innerHTML = '';
+    quizDisplay.append(speakBtn);
+}
+
+function showQuizScore() {
+
 }
