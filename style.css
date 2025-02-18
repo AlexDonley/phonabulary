@@ -36,15 +36,18 @@ body {
     transition: all 0.4s ease-in-out;
 }
 
-/* FORMATTING FOR MENU */
+/* FORMATTING FOR LAYERS */
 
-.menu{
-    display: grid;
-    grid-template-columns: 200px min-content;
+.layer {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
 }
 
-.to-be-changed {
-	color: black;
+.menu-layer{
+    display: grid;
+    grid-template-columns: 200px min-content;
 }
 
 input[type=checkbox]:checked ~ .to-be-changed {
@@ -88,7 +91,7 @@ label {
     bottom: 20px;
 }
 
-.options{
+.option-grid {
     width: -webkit-calc(100% - 240px);
     width:    -moz-calc(100% - 240px);
     width:         calc(100vw - 240px);
@@ -224,6 +227,10 @@ ruby {
     ruby-align: center;
 }
 
+ruby.grades {
+    ruby-position: under;
+}
+
 rt {
     font-size: 4vh;
     font-weight: bold;
@@ -263,10 +270,6 @@ rt {
 }
 
 .quiz-layer {
-    position: fixed;
-    top: 0;
-    height: 100vh;
-    width: 100vw;
     display: grid;
     grid-template-columns: 3fr 1fr;
     justify-content: center;
@@ -373,9 +376,7 @@ rt {
     background: red;
 }
 
-.progress-layer {
-    width: 100vw;
-    margin-top: 10vh;
+.grade-layer {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -392,14 +393,6 @@ rt {
     justify-content: center;
     align-items: center;
     text-align: center;
-}
-
-ruby {
-    ruby-position: under;
-}
-
-rt {
-    font-size: 4vh;
 }
 
 .hide {
