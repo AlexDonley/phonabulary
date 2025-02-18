@@ -25,7 +25,7 @@
 <body>
     <div class="rainbow" id="rainbow"></div>
 
-    <div class="menu" id="menu">
+    <div class="layer menu-layer" id="menu">
         
         <div class="settings" id="settings">
             <div class="side-wrapper">
@@ -52,11 +52,28 @@
             </div>
         </div>
 
-        <div class="options" id="optionButtons">
+        <div class="option-grid" id="optionGrid">
         </div>
-       
     </div>
-    <div class="quiz-layer hide" id="quizLayer">
+
+    <div class="layer flashcard-layer hide">
+        <div class="img-wrap" id="imgWrap">
+            <img class='image disappear' id="pic" src='https://images.unsplash.com/photo-1494256997604-768d1f608cac?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGNhdHxlbnwwfHwwfHx8MA%3D%3D'>
+        </div>
+        <h1 class="letters" id="letterizer"></h1>
+        <div class="translate-wrap clear" id="translateWrap">
+            <div class="translations" id="translateText">預設</div>
+        </div>
+        <div class="actions hide" id="actions">
+            <div class="btnNest">
+                <button type=btn class="taskBtn" id="prevBtn"><ion-icon name="arrow-back-outline"></ion-icon></button>
+                <button type=btn class="taskBtn" id="homeBtn"><ion-icon name="home"></ion-icon></button>
+                <button type=btn class="taskBtn" id="nextBtn"><ion-icon name="arrow-forward-outline"></ion-icon></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="layer quiz-layer hide" id="quizLayer">
         <div class="quiz-display" id="quizDisplay">
             d
         </div>
@@ -64,29 +81,13 @@
     
         </div>
     </div>
-    <div class="progress-layer hide" id="progressLayer">
-        <div id="progressMap"></div>
-        <div class="four-columns" id="progressDigit"></div>
+
+    <div class="layer grade-layer hide" id="gradeLayer">
+        <div id="gradeMap"></div>
+        <div class="four-columns" id="gradeDigit"></div>
     </div>
 
 
-    <div class="img-wrap" id="imgWrap">
-        <img class='image disappear' id="pic" src='https://images.unsplash.com/photo-1494256997604-768d1f608cac?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGNhdHxlbnwwfHwwfHx8MA%3D%3D'>
-    </div>
-
-    <h1 class="letters" id="letterizer"></h1>
-
-    <div class="translate-wrap clear" id="translateWrap">
-        <div class="translations" id="translateText">預設</div>
-    </div>
-
-    <div class="actions hide" id="actions">
-        <div class="btnNest">
-            <button type=btn class="taskBtn" id="prevBtn"><ion-icon name="arrow-back-outline"></ion-icon></button>
-            <button type=btn class="taskBtn" id="homeBtn"><ion-icon name="home"></ion-icon></button>
-            <button type=btn class="taskBtn" id="nextBtn"><ion-icon name="arrow-forward-outline"></ion-icon></button>
-        </div>
-    </div>
 
 </body>
 </html>
