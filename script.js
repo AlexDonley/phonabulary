@@ -30,13 +30,13 @@ const quizBtn       = document.querySelector('#quizBtn')
 const prevBtn       = document.querySelector('#prevBtn');
 const homeBtn       = document.querySelector('#homeBtn');
 const nextBtn       = document.querySelector('#nextBtn');
-const options       = document.querySelector('#optionButtons');
+const optionGrid    = document.querySelector('#optionGrid');
 const quizLayer     = document.querySelector('#quizLayer');
 const quizDisplay   = document.querySelector('#quizDisplay');
 const quizMenu      = document.querySelector('#quizMenu');
-const progressLayer = document.querySelector('#progressLayer');
-const progressMap   = document.querySelector('#progressMap');
-const progressDigit = document.querySelector('#progressDigit');
+const gradeLayer    = document.querySelector('#gradeLayer');
+const gradeMap      = document.querySelector('#gradeMap');
+const gradeDigit    = document.querySelector('#gradeDigit');
 
 const actions       = document.querySelector('#actions');
 const pic           = document.querySelector('#pic');
@@ -126,7 +126,7 @@ loadABCs()
 
 function populatePhonicBtns(){
 
-    options.innerHTML = ''
+    optionGrid.innerHTML = ''
     selectedPhonics = []
     wordQueue = [];
 
@@ -140,7 +140,7 @@ function populatePhonicBtns(){
         newButton.id = "phon" + n;
         newButton.innerHTML = key;
         newButton.addEventListener('click', managePhonicList(key))
-        options.appendChild(newButton);
+        optionGrid.appendChild(newButton);
         n++
 
     }
@@ -226,7 +226,7 @@ colorRainbow();
 function go(){
     if (selectedPhonics.length > 0) {
         
-        options.classList.add('hide');
+        optionGrid.classList.add('hide');
         settings.classList.add('hide');
         actions.classList.remove('hide');
 
@@ -443,7 +443,7 @@ function goHome() {
     translateWrap.classList.add('clear');
     
     
-    options.classList.remove('hide');
+    optionGrid.classList.remove('hide');
     settings.classList.remove('hide');
     
     if (!(pic.classList.contains('disappear'))){
@@ -539,7 +539,7 @@ const gradeCaptions = [
 function startQuiz() {
     console.log(defaultABCs[0]['lower']);
 
-    options.classList.add('hide');
+    optionGrid.classList.add('hide');
     settings.classList.add('hide');
     quizLayer.classList.remove('hide')
 
@@ -555,7 +555,7 @@ function startQuiz() {
     // each phase I need to
     // prepare a shuffled queue of integers
     // show the prompt letter, image, or sound
-    // display 4 button options
+    // display 4 button optionGrid
 
     abcsOrder.forEach(letter => {
         let letterDict = {};
@@ -723,21 +723,22 @@ function showQuizScore() {
     console.log('show quiz score');
     quizLayer.classList.add('hide');
 
-    progressLayer.classList.remove('hide');
+    gradeLayer.classList.remove('hide');
     const progResults = generateGradeVisual(errorMap)
 
-    progressMap.append(progResults[0]);
+    gradeMap.append(progResults[0]);
 
     let i = 0;
     progResults[1].forEach(num => {
         const digitRuby = document.createElement('ruby');
         digitRuby.innerText = num + "%";
+        digitRuby.classList.add('grades')
 
         const gradeCap = document.createElement('rt');
         gradeCap.innerText = gradeCaptions[i]
         digitRuby.append(gradeCap)
 
-        progressDigit.append(digitRuby);
+        gradeDigit.append(digitRuby);
         i++
     })
 }
