@@ -11,6 +11,9 @@ export function synthSpeak(str, speed, vol, lang) {
     synthUtter.volume = vol
     // synthUtter.voice = synthVoices[voiceSelect.value]
     synthUtter.lang = lang;
+
+    const voicesList = window.speechSynthesis.getVoices()
+    synthUtter.voice = voicesList.find((voice) => voice.lang === lang);
   
     // SpeechSyn is currently synthSpeaking, cancel the current synthUtter(s)
     if (synth.speaking) { 
