@@ -8,6 +8,7 @@ import {
 } from './js/phon-process.js'
 import { shuffleOne, shuffleInts } from './js/shuffle.js'
 import { synthSpeak } from './js/speech-synth.js'
+import { startTimer2, stopTimer2 } from './js/timer.js'
 
 // Lyn's lessons remove later
 
@@ -49,6 +50,18 @@ prevBtn.addEventListener('click', previous);
 homeBtn.addEventListener('click', goHome);
 nextBtn.addEventListener('click', next);
 quizBtn.addEventListener('click', startQuiz);
+
+const audioDict = {
+    "correct": "windowsXP_logon.mp3",
+    "incorrect" : "windowsXP_default.mp3"
+}
+
+function generateAudio(str, vol) {
+    const newSound = new Audio("./sfx/" + audioDict[str]);
+    newSound.volume = vol;
+
+    newSound.play()
+}
 
 
 //let backdrop = document.getElementById('bg');
@@ -530,14 +543,15 @@ const abcsOrder =[
 ]
 const correctLevels = ['q-incorrect', 'q-partial', 'q-close', 'q-correct']
 const gradeCaptions = [
-    'matching cases',
-    'matching image to letter',
-    'matching speech to letter',
+    'cases',
+    'image to letter',
+    'speech to letter',
     'total'
 ]
 
 function startQuiz() {
-    console.log(defaultABCs[0]['lower']);
+    
+    startTimer2()
 
     optionGrid.classList.add('hide');
     settings.classList.add('hide');
@@ -635,6 +649,10 @@ function isAnswCorrect(bool, idx, map) {
         
         if (bool) {
 
+            if (quizPhase < 3) {
+                generateAudio('correct', 1)
+            }
+
             if (quizQueue.length > 0) {
                 nextQuizQuestion()
             } else if (quizPhase < 3) {
@@ -645,6 +663,9 @@ function isAnswCorrect(bool, idx, map) {
 
         } else {
             // console.log(e)
+
+            generateAudio('incorrect', 1)
+
             errorMap[idx][phaseOrder[quizPhase]] -= 1
             console.log(errorMap)
 
@@ -721,6 +742,7 @@ function prepQuizAudio(str) {
 
 function showQuizScore() {
     console.log('show quiz score');
+    
     quizLayer.classList.add('hide');
 
     gradeLayer.classList.remove('hide');
@@ -732,7 +754,13 @@ function showQuizScore() {
     progResults[1].forEach(num => {
         const digitRuby = document.createElement('ruby');
         digitRuby.innerText = num + "%";
-        digitRuby.classList.add('grades')
+        digitRuby.classList.add('grades');
+
+        if (i < 3) {
+            digitRuby.classList.add('upper-grade');
+        } else {
+            digitRuby.classList.add('lower-grade');
+        }
 
         const gradeCap = document.createElement('rt');
         gradeCap.innerText = gradeCaptions[i]
@@ -740,7 +768,18 @@ function showQuizScore() {
 
         gradeDigit.append(digitRuby);
         i++
-    })
+    });
+
+    const timerRuby = document.createElement('ruby');
+    timerRuby.classList.add('lower-grade');
+    timerRuby.classList.add('grades');
+    timerRuby.innerText = stopTimer2()[1];
+
+    const timeCap = document.createElement('rt');
+    timeCap.innerText = 'time';
+    timerRuby.append(timeCap);
+
+    gradeDigit.append(timerRuby);
 }
 
 function generateGradeVisual(map) {
