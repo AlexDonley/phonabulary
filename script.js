@@ -15,15 +15,18 @@ import { startTimer2, stopTimer2 } from './js/timer.js'
 let errorMap = [];
 const phaseOrder = [null, 'caseScore', 'imgScore', 'listScore'];
 
-const w8 = ["sat", "pin", "tap", "pan", "nap"]
-const w9 = ["sat", "sit", "pin", "tap", "pan", "nap", "sip", "sap", "sis", "sin", "tin", "tan", "tip", "pit", "pat", "nip", "pig", "pic", "pad"]
-
-const myDocument = document.documentElement;
+const w8 = ["sat", "pin", "tap", "pan", "nap"];
+const w9 = [
+    "sat", "sit", "pin", "tap", "pan", 
+    "nap", "sip", "sap", "sis", "sin", 
+    "tin", "tan", "tip", "pit", "pat", 
+    "nip", "pig", "pic", "pad"
+];
 
 const rainbow       = document.querySelector('#rainbow');
-const shuffler      = document.querySelector('#shuffler');
-const rainbower     = document.querySelector('#rainbower');
-const imager        = document.querySelector('#imager');
+const shuffleCheck  = document.querySelector('#shuffleCheck');
+const rainbowCheck  = document.querySelector('#rainbowCheck');
+const imageCheck    = document.querySelector('#imageCheck');
 const menu          = document.querySelector('#menu');
 const settings      = document.querySelector('#settings');
 const goBtn         = document.querySelector('#goBtn');
@@ -183,9 +186,8 @@ function managePhonicList(str) {
 }
 
 function colorRainbow(hue) {
-    let colorString = "";
     
-    let colorIndex = [];
+    let colorString = "";
     const defaultColor = 'rgb(56, 56, 56)';
 
     if (!hue){
@@ -203,8 +205,6 @@ function colorRainbow(hue) {
         const hslString = 'hsl(' + hue + ' 80% 80%)';
         const index = hue / 3.6;
         const colorIndex = [hslString, index];
-
-        console.log(colorIndex);
         
         while (rainbowRibbon[n][1] < colorIndex[1]) {
             n++;        
@@ -226,9 +226,8 @@ function colorRainbow(hue) {
         }
         
     })
-    colorString = 'linear-gradient(90deg, ' + colorString + ')'
-    //console.log(colorString);
 
+    colorString = 'linear-gradient(90deg, ' + colorString + ')';
     rainbow.style.background = colorString;
 }
 
@@ -239,12 +238,10 @@ colorRainbow();
 function go(){
     if (selectedPhonics.length > 0) {
         
-        optionGrid.classList.add('hide');
-        settings.classList.add('hide');
-        actions.classList.remove('hide');
+        switchLayer('flashcard')
 
         createQueue();
-        if (shuffler.checked === true){
+        if (shuffleCheck.checked === true){
             wordQueue = shuffleOne(wordQueue);
         }
 
@@ -298,41 +295,10 @@ function populateLetters(arr){
         n++;
     })
 
-    if (imager.checked === true) {
+    if (imageCheck.checked === true) {
         setTimeout(function(){
             changePic(currentWord)
         }, 500);
-    }
-}
-
-//fullscreen button 
-
-function toggleFullscreen(){
-    //console.log(fullbtn);
-    
-    if (fullbtn.innerHTML == "fullscreen"){
-        
-        if(myDocument.requestFullscreen){
-            myDocument.requestFullscreen();
-        } else if(myDocument.msRequestFullscreen){
-            myDocument.msRequestFullscreen();
-        } else if (myDocument.mozRequestFullscreen){
-            myDocument.mozRequestFullscreen();
-        } else if (myDocument.webkitRequestFullscreen){
-            myDocument.webkitRequestFullscreen();
-        }
-
-    } else {
-        
-        if(document.exitFullscreen){
-            document.exitFullscreen();
-        } else if (document.msexitFullscreen){
-            document.msexitFullscreen();
-        } else if (document.mozexitFullscreen){
-            document.mozexitFullscreen();
-        } else if (document.webkitexittFullscreen){
-            document.webkitexittFullscreen();
-        }
     }
 }
 
@@ -356,7 +322,7 @@ function next(){
             currentLetter.classList.add('bigger');
             // this code is for random colored letters
 
-            if (rainbowIndexer.length > 0 && rainbower.checked === true) {
+            if (rainbowIndexer.length > 0 && rainbowCheck.checked === true) {
                 let huePick = rainbowIndexer[Math.floor(Math.random() * rainbowIndexer.length)];
                 rainbowIndexer.splice(rainbowIndexer.indexOf(huePick), 1);
                 console.log(rainbowIndexer);
@@ -369,7 +335,7 @@ function next(){
             // switch the the code below for rainbow lettering
             // hue = 360 * (letterCount) / wordLength
             currentLetter.style.color = `hsl(${hue}, 80%, 80%)`;
-            if (rainbower.checked === true){
+            if (rainbowCheck.checked === true){
                 hue += 1;
                 colorRainbow(hue);
             }
@@ -424,7 +390,7 @@ function next(){
                   
             translateWrap.classList.remove('clear');
             
-            if (imager.checked === true){
+            if (imageCheck.checked === true){
                 toggleImg('show')
             }
 
@@ -433,7 +399,7 @@ function next(){
         } else {
             wordCount++;
             
-            if (imager.checked === true){
+            if (imageCheck.checked === true){
                 toggleImg('hide')
             }
 
@@ -452,12 +418,7 @@ function next(){
 function goHome() {
     letterizer.innerHTML = '';
         
-    actions.classList.add('hide');
-    translateWrap.classList.add('clear');
-    
-    
-    optionGrid.classList.remove('hide');
-    settings.classList.remove('hide');
+    switchLayer('menu')
     
     if (!(pic.classList.contains('disappear'))){
         toggleImg('hide')
@@ -531,6 +492,15 @@ function changePic(word) {
     pic.src = key;
 }
 
+function switchLayer(str) {
+    const layersArr = Array.from(document.querySelectorAll('.layer'));
+    layersArr.forEach(layer => {
+        layer.classList.add('hide');
+    });
+
+    const pickedLayer = document.querySelector('.' + str + '-layer');
+    pickedLayer.classList.remove('hide')
+}
 
 // QUIZ FUNCTIONS
 
@@ -541,7 +511,12 @@ const abcsOrder =[
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
 ]
-const correctLevels = ['q-incorrect', 'q-partial', 'q-close', 'q-correct']
+const correctLevels = [
+    'q-incorrect', 
+    'q-partial', 
+    'q-close', 
+    'q-correct'
+]
 const gradeCaptions = [
     'cases',
     'image to letter',
@@ -553,12 +528,9 @@ function startQuiz() {
     
     startTimer2()
 
-    optionGrid.classList.add('hide');
-    settings.classList.add('hide');
-    quizLayer.classList.remove('hide')
+    switchLayer('quiz')
 
     errorMap = [];
-
     quizPhase = 1;
 
     // 3 PHASES: 
@@ -571,17 +543,15 @@ function startQuiz() {
     // show the prompt letter, image, or sound
     // display 4 button optionGrid
 
-    abcsOrder.forEach(letter => {
+    defaultABCs.forEach(letterObj => {
         let letterDict = {};
-        letterDict.lower = letter;
+        letterDict.lower = letterObj.lower;
         letterDict.caseScore = 3;
         letterDict.imgScore = 3;
         letterDict.listScore = 3;
 
         errorMap.push(letterDict);
     })
-
-    console.log(errorMap);
 
     startPhase(quizPhase);
 }
@@ -653,7 +623,7 @@ function isAnswCorrect(bool, idx, map) {
                 generateAudio('correct', 1)
             }
 
-            if (quizQueue.length > 0) {
+            if (quizQueue.length > 1) {
                 nextQuizQuestion()
             } else if (quizPhase < 3) {
                 startPhase(quizPhase + 1)
@@ -662,7 +632,6 @@ function isAnswCorrect(bool, idx, map) {
             }
 
         } else {
-            // console.log(e)
 
             generateAudio('incorrect', 1)
 
@@ -686,11 +655,11 @@ function nextQuizQuestion() {
         
     } else if (quizPhase == 2) {
 
-        prepQuizImage(correctAnswer)
+        prepQuizImage(correctAnswer);
 
     } else if (quizPhase == 3) {
 
-        prepQuizAudio(defaultABCs[correctAnswer]['noun'])
+        prepQuizAudio(defaultABCs[correctAnswer]['noun']);
 
     }
 
@@ -700,7 +669,7 @@ function nextQuizQuestion() {
 function assignSpeech(idx) {
 
     return function executeOnEvent (e) {
-        synthSpeak(defaultABCs[idx]['noun'], 0.5, 1.0, 'en')
+        synthSpeak(defaultABCs[idx]['noun'], 0.5, 1.0, 'en');
     }
 }
 
@@ -711,7 +680,7 @@ function prepQuizText(str) {
 function prepQuizImage(idx) {
 
     const newImg = document.createElement('img');
-    newImg.classList.add('quiz-img')
+    newImg.classList.add('quiz-img');
 
     // const imgURL = "https://images.unsplash.com/photo-" + 
     //     defaultABCs[correctAnswer]['Unsplash'] + 

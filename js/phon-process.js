@@ -55,6 +55,8 @@ export function wordToPhonArr(word) {
     return thesePhons
 }
 
+console.log(wordToPhonArr('glalt'))
+
 export function wordToLetterArr(word){
     const charArray = word.split('');
 
@@ -88,14 +90,16 @@ export function joinIntoClusters(charArr, word){
             }
 
             codaTest1 = phonArr[n+1] + phonArr[n+2];
+            
             if (codaDigraphs.includes(codaTest1)) {
-                codaTest2 = (codaTest1 + arr[n+3]);
+
+                codaTest2 = (codaTest1 + phonArr[n+3]);
+
                 if (codaTrigraphs.includes(codaTest2)) {
                     phonArr.splice((n + 1), 3, codaTest2);
                 } else {
                     phonArr.splice((n + 1), 2, codaTest1);
                 }
-                
             }
 
             onsetTest1 = (phonArr[n-2] + phonArr[n-1]).toString();
@@ -109,8 +113,8 @@ export function joinIntoClusters(charArr, word){
                 }                
             }
         }
-        n++
+        n++;
     })
     
-    return phonArr
+    return phonArr;
 }
