@@ -232,7 +232,7 @@ ruby.grades {
 }
 
 rt {
-    font-size: 4vh;
+    font-size: 2.5vh;
     font-weight: bold;
 }
 
@@ -385,14 +385,21 @@ rt {
 
 .four-columns {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    font-size: 18vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    font-size: 12vh;
     color: white;
     font-weight: bold;
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+.upper-grade {
+    grid-column: span 2;
+}
+.lower-grade {
+    grid-column: span 3;
 }
 
 .hide {
