@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="style.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.4.4/qrcode.js" integrity="sha512-oxrVyBhqnzQ0BzuM0A/6dEIk0alz0p4SpDRaWvtuUoarIc8rnL5lVniHG5Dp21MRFojcQcmKHjaskNXhSaUPPw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="module" src="script.js" defer></script>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <title>Phonabulary - Practice English Phonics</title>
@@ -48,11 +49,23 @@
                     </label>
                 </div>
                 <button class="side-btn" id="quizBtn">Quiz</button>
+                <button class="side-btn" id="linksBtn">Other</button>
                 <button class="go" id="goBtn" disabled=true>GO</button>
             </div>
         </div>
 
         <div class="option-grid" id="optionGrid">
+        </div>
+    </div>
+
+    <div class="layer links-layer hide">
+        <div class="link-cards"></div>
+        <div class="qr-link">
+            <div class="qr-img-cap">
+                <img id="qrImg">
+                <a class="caption"></a>
+            </div>
+            
         </div>
     </div>
 
