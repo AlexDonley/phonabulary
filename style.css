@@ -155,6 +155,49 @@ button.taskBtn {
     height: 30px;
 }
 
+/* FORMATTING FOR LINKS LAYER */
+
+.links-layer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.link-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2vh;
+    margin: 2vh;
+}
+
+.one-link {
+    text-align: center;
+    background-color: white;
+    border-radius: 1vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.qr-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5%
+}
+
+.qr-img-cap {
+    background: white;
+    border-radius: 1vh;
+    padding: 2vh;
+    text-align: center;
+    font-weight: bold;
+}
+
+.qr-img-cap > img {
+    width: 100%;
+}
+
 /* FORMATTING FOR WORD QUEUE */
 
 .letters {
