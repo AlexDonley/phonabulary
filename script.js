@@ -30,7 +30,8 @@ const imageCheck    = document.querySelector('#imageCheck');
 const menu          = document.querySelector('#menu');
 const settings      = document.querySelector('#settings');
 const goBtn         = document.querySelector('#goBtn');
-const quizBtn       = document.querySelector('#quizBtn')
+const quizBtn       = document.querySelector('#quizBtn');
+const linksBtn      = document.querySelector('#linksBtn');
 const prevBtn       = document.querySelector('#prevBtn');
 const homeBtn       = document.querySelector('#homeBtn');
 const nextBtn       = document.querySelector('#nextBtn');
@@ -48,11 +49,18 @@ const letterizer    = document.querySelector('#letterizer');
 const translateWrap = document.querySelector('#translateWrap');
 const translateText = document.querySelector('#translateText');
 
+const linkCards        = document.querySelector('.link-cards')
+const qrImgCap      = document.querySelector('.qr-img-cap');
+
+const thisURL = "alexdonley.github.io/phonabulary"
+
+
 goBtn.addEventListener('click', go);
 prevBtn.addEventListener('click', previous);
 homeBtn.addEventListener('click', goHome);
 nextBtn.addEventListener('click', next);
 quizBtn.addEventListener('click', startQuiz);
+linksBtn.addEventListener('click', showLinks);
 
 const audioDict = {
     "correct": "windowsXP_logon.mp3",
@@ -86,6 +94,56 @@ let wordQueue = []
 let EN_ZH_img
 let defaultWordLists
 let defaultABCs
+
+
+const mainURL = "https://alexdonley.github.io/"
+const miniURLs = [
+    "phonabulary",
+    "speak_up",
+    "glossy",
+    "panels",
+    "spin_wheel",
+    "readable"
+]
+
+function generateQR(str, elem) {
+    const imgSrc = QRCode.toDataURL(str, {
+        width: 500,
+        height: 500
+    }).then(dataUrl => {
+        const img = elem.querySelector('img');
+        const cap = elem.querySelector('.caption');
+
+        img.src = dataUrl;
+        cap.innerText = str;
+        cap.href = str;
+        console.log(dataUrl)
+    })
+}
+
+generateQR(mainURL + miniURLs[0], qrImgCap);
+
+function populateLinkCards() {
+    miniURLs.forEach(name => {
+        const newCard = document.createElement('div');
+        newCard.classList.add('one-link');
+        newCard.addEventListener('click', QRclosure(mainURL + name))
+
+        const newLink = document.createElement('div');
+        newLink.innerText = name;
+
+        newCard.append(newLink);
+        linkCards.append(newCard);
+    })
+}
+
+function QRclosure(str) {
+    return function executeOnEvent(e) {
+        generateQR(str, qrImgCap);
+    }
+}
+
+populateLinkCards()
 
 function loadtranslateTexts(){
     fetch('./data/EN_ZH_img.json')
@@ -493,6 +551,7 @@ function changePic(word) {
 }
 
 function switchLayer(str) {
+
     const layersArr = Array.from(document.querySelectorAll('.layer'));
     layersArr.forEach(layer => {
         layer.classList.add('hide');
@@ -500,6 +559,10 @@ function switchLayer(str) {
 
     const pickedLayer = document.querySelector('.' + str + '-layer');
     pickedLayer.classList.remove('hide')
+}
+
+function showLinks() {
+    switchLayer('links')
 }
 
 // QUIZ FUNCTIONS
