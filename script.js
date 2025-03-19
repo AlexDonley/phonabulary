@@ -100,10 +100,12 @@ const mainURL = "https://alexdonley.github.io/"
 const miniURLs = [
     "phonabulary",
     "speak_up",
-    "glossy",
-    "panels",
     "spin_wheel",
-    "readable"
+    "panels",
+    "glossy",
+    "readable",
+    "watch_your_tone",
+    "multitimer"
 ]
 
 function generateQR(str, elem) {
@@ -117,6 +119,7 @@ function generateQR(str, elem) {
         img.src = dataUrl;
         cap.innerText = str;
         cap.href = str;
+        cap.target = "_blank"
         console.log(dataUrl)
     })
 }
@@ -127,19 +130,28 @@ function populateLinkCards() {
     miniURLs.forEach(name => {
         const newCard = document.createElement('div');
         newCard.classList.add('one-link');
-        newCard.addEventListener('click', QRclosure(mainURL + name))
+        newCard.addEventListener('click', QRclosure(mainURL + name, newCard))
 
         const newLink = document.createElement('div');
-        newLink.innerText = name;
+        newLink.classList.add('link-text');
+        const spaceStr = name.replaceAll("_", " ");
+        newLink.innerText = spaceStr;
 
         newCard.append(newLink);
         linkCards.append(newCard);
     })
 }
 
-function QRclosure(str) {
+function QRclosure(str, elem) {
     return function executeOnEvent(e) {
         generateQR(str, qrImgCap);
+
+        const oldHighlight = document.querySelector('.highlight-card')
+        if (oldHighlight) {
+            oldHighlight.classList.remove('highlight-card');
+        }
+        
+        elem.classList.add('highlight-card');
     }
 }
 
