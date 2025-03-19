@@ -177,6 +177,15 @@ button.taskBtn {
     justify-content: center;
     align-items: center;
     font-size: 2rem;
+    transition: background-color 0.3s;
+}
+
+.link-text {
+    user-select: none;
+}
+
+.highlight-card {
+    background-color: yellow;
 }
 
 .qr-link {
@@ -192,6 +201,10 @@ button.taskBtn {
     padding: 2vh;
     text-align: center;
     font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
 }
 
 .qr-img-cap > img {
