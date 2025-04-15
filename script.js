@@ -453,9 +453,13 @@ function next(){
             translateText.innerHTML = ''
             
             charArr.forEach(char => {
-                
-                
-                translateText.append(constructZhuRT(char, charToZhu(char))) 
+                const thisZhu = charToZhu(char);
+
+                if (thisZhu) {
+                    translateText.append(constructZhuRT(char, thisZhu))
+                } else {
+                    translateText.append(char)
+                }
             })
                   
             translateWrap.classList.remove('clear');
