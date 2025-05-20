@@ -1,8 +1,4 @@
-// import { 
-//      splitPinyin, addPinTone, 
-//      charToPin, pinToZhu,
-//      constructPinRT, constructZhuRT 
-// } from './js/ruby-text.js'
+// import { splitPinyin, addPinTone, constructPinRT, constructZhuyinRT } from './ruby-text.js'
 
 // FETCH DATA SECTION 
 
@@ -12,10 +8,10 @@ export const monocharLangs = [
     'cmn-Hans-CN', 'cmn-Hant-TW'
 ]
 
-export let pinyinKeys
-export let zhuyinDict
+let pinyinKeys
+let zhuyinDict
 
-function getZhChars() {
+export function getZhChars() {
     fetch('./data/py_trad_monochars.json')
     .then(res => {
         if (res.ok) {
@@ -31,7 +27,7 @@ function getZhChars() {
     .catch(error => console.log(error))
 }
 
-function getPinZhuDict() {
+export function getPinZhuDict() {
     fetch('./data/py_to_zy.json')
     .then(res => {
         if (res.ok) {
@@ -86,13 +82,17 @@ export function charToPin(char) {
 
 export function charToZhu(char) {
     const pinyin = charToPin(char)
-    const zhuyin = pinToZhu(pinyin)
 
-    return zhuyin
+    if (pinyin) {
+        return pinToZhu(pinyin)
+    } else {
+        return false
+    }
 }
 
 export function pinToZhu(pin) {
-
+    
+    console.log(pin)
     const syll = splitPinyin(pin)[0]
     const tone = splitPinyin(pin)[1]
     
